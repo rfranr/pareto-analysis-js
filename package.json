@@ -1,0 +1,99 @@
+{
+  "name": "js-pareto-analysis",
+  "version": "2.0.0",
+  "description": "JavaScript Pareto Rule Analysis Tool - Analyze and visualize JavaScript feature usage following the 80/20 principle",
+  "main": "src/analyzer.mjs",
+  "type": "module",
+  "scripts": {
+    "analyze": "node src/analyzer.mjs",
+    "pareto": "node src/pareto-analyzer.mjs",
+    "charts": "node src/chart-generator.mjs",
+    "pipeline": "./analyze.sh",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf charts/ stats/ reports/ *.json *.md *.csv *.png",
+    "clean-all": "npm run clean && rm -rf node_modules/ package-lock.json",
+    "demo": "npm run analyze -- --repo ./repos/core-js --output demo-stats.json && npm run pareto -- demo-stats.json --output demo-report.md",
+    "full-demo": "./analyze.sh full ./repos/core-js",
+    "lint": "echo \"Linting not configured yet\"",
+    "format": "echo \"Formatting not configured yet\"",
+    "dev": "node --watch src/analyzer.mjs",
+    "start": "npm run analyze"
+  },
+  "bin": {
+    "js-pareto": "./src/analyzer.mjs",
+    "pareto-analyze": "./analyze.sh"
+  },
+  "files": [
+    "src/",
+    "analyze.sh",
+    "README.md",
+    "MIGRATION.md",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "javascript",
+    "jsx",
+    "analysis",
+    "pareto",
+    "ast",
+    "code-quality",
+    "metrics",
+    "visualization",
+    "static-analysis",
+    "code-complexity",
+    "feature-detection",
+    "acorn",
+    "charts",
+    "reporting"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://github.com/rfranr"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfranr/mcp-pareto-rule.git",
+    "directory": "js"
+  },
+  "bugs": {
+    "url": "https://github.com/rfranr/mcp-pareto-rule/issues"
+  },
+  "homepage": "https://github.com/rfranr/mcp-pareto-rule/tree/main/js#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "acorn-loose": "^8.3.0",
+    "acorn-jsx": "^5.3.2",
+    "acorn-walk": "^8.3.4",
+    "acorn-import-assertions": "^1.9.0",
+    "acorn-import-attributes": "^1.9.5",
+    "chartjs-node-canvas": "^5.0.0",
+    "chart.js": "^4.5.0",
+    "csv-parse": "^5.5.6",
+    "fs-extra": "^11.2.0",
+    "yargs": "^17.7.2"
+  },
+  "peerDependencies": {
+    "canvas": "^2.11.0"
+  },
+  "peerDependenciesMeta": {
+    "canvas": {
+      "optional": true
+    }
+  },
+  "optionalDependencies": {
+    "canvas": "^2.11.0"
+  }
+}

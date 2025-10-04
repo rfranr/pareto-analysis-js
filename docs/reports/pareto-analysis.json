@@ -1,0 +1,1577 @@
+{
+  "metadata": {
+    "generatedAt": "2025-10-04T19:54:03.174Z",
+    "repositories": 55,
+    "metrics": [
+      "totals",
+      "presence",
+      "perKLOC"
+    ],
+    "cuts": [
+      0.8,
+      0.9,
+      0.95
+    ]
+  },
+  "results": [
+    {
+      "metric": "totals",
+      "summary": {
+        "featuresWithData": 110,
+        "totalOccurrences": 6465462
+      },
+      "paretoAnalysis": [
+        {
+          "cut": 0.8,
+          "featuresCount": 17,
+          "features": [
+            "binaryOp_/",
+            "labels",
+            "assignOp_=",
+            "functions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_*",
+            "binaryOp_|",
+            "arrowFunctions",
+            "binaryOp_===",
+            "binaryOp_-",
+            "binaryOp_>>",
+            "logicalAND",
+            "binaryOp_<",
+            "ternary",
+            "awaitExpressions"
+          ]
+        },
+        {
+          "cut": 0.9,
+          "featuresCount": 30,
+          "features": [
+            "binaryOp_/",
+            "labels",
+            "assignOp_=",
+            "functions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_*",
+            "binaryOp_|",
+            "arrowFunctions",
+            "binaryOp_===",
+            "binaryOp_-",
+            "binaryOp_>>",
+            "logicalAND",
+            "binaryOp_<",
+            "ternary",
+            "awaitExpressions",
+            "logicalOR",
+            "binaryOp_>",
+            "binaryOp_!==",
+            "exportDecls_named",
+            "importDecls",
+            "switchCases",
+            "jsxElements",
+            "updateOp_++",
+            "templateLiterals",
+            "forClassic",
+            "asyncFunctions",
+            "break",
+            "spreadElement"
+          ]
+        },
+        {
+          "cut": 0.95,
+          "featuresCount": 42,
+          "features": [
+            "binaryOp_/",
+            "labels",
+            "assignOp_=",
+            "functions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_*",
+            "binaryOp_|",
+            "arrowFunctions",
+            "binaryOp_===",
+            "binaryOp_-",
+            "binaryOp_>>",
+            "logicalAND",
+            "binaryOp_<",
+            "ternary",
+            "awaitExpressions",
+            "logicalOR",
+            "binaryOp_>",
+            "binaryOp_!==",
+            "exportDecls_named",
+            "importDecls",
+            "switchCases",
+            "jsxElements",
+            "updateOp_++",
+            "templateLiterals",
+            "forClassic",
+            "asyncFunctions",
+            "break",
+            "spreadElement",
+            "classFields",
+            "classMethods",
+            "binaryOp_==",
+            "binaryOp_>>>",
+            "interpolatedTemplates",
+            "throw",
+            "classDecls",
+            "binaryOp_&",
+            "assignOp_+=",
+            "binaryOp_<<",
+            "binaryOp_%",
+            "updateOp_--"
+          ]
+        }
+      ],
+      "topFeatures": [
+        {
+          "feature": "binaryOp_/",
+          "count": 1298069,
+          "percentage": 0.20076972070982707,
+          "cumulativeCount": 1298069,
+          "cumulativePercentage": 0.20076972070982707
+        },
+        {
+          "feature": "labels",
+          "count": 781944,
+          "percentage": 0.12094170532593031,
+          "cumulativeCount": 2080013,
+          "cumulativePercentage": 0.32171142603575736
+        },
+        {
+          "feature": "assignOp_=",
+          "count": 711165,
+          "percentage": 0.10999445979266446,
+          "cumulativeCount": 2791178,
+          "cumulativePercentage": 0.43170588582842184
+        },
+        {
+          "feature": "functions",
+          "count": 392279,
+          "percentage": 0.06067300372347715,
+          "cumulativeCount": 3183457,
+          "cumulativePercentage": 0.492378889551899
+        },
+        {
+          "feature": "return",
+          "count": 265406,
+          "percentage": 0.0410498120629276,
+          "cumulativeCount": 3448863,
+          "cumulativePercentage": 0.5334287016148266
+        },
+        {
+          "feature": "if",
+          "count": 255167,
+          "percentage": 0.039466166532260184,
+          "cumulativeCount": 3704030,
+          "cumulativePercentage": 0.5728948681470868
+        },
+        {
+          "feature": "binaryOp_+",
+          "count": 253173,
+          "percentage": 0.03915775856388917,
+          "cumulativeCount": 3957203,
+          "cumulativePercentage": 0.6120526267109759
+        }
+      ],
+      "repositories": [
+        {
+          "repository": "core-js",
+          "featuresTotal": 121,
+          "featuresObserved": 86,
+          "coverage": 0.7107438016528925
+        },
+        {
+          "repository": "underscore",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "three.js",
+          "featuresTotal": 121,
+          "featuresObserved": 100,
+          "coverage": 0.8264462809917356
+        },
+        {
+          "repository": "js-yaml",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "chalk",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "css-loader",
+          "featuresTotal": 121,
+          "featuresObserved": 56,
+          "coverage": 0.4628099173553719
+        },
+        {
+          "repository": "eslint",
+          "featuresTotal": 121,
+          "featuresObserved": 90,
+          "coverage": 0.743801652892562
+        },
+        {
+          "repository": "shelljs",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "react",
+          "featuresTotal": 121,
+          "featuresObserved": 104,
+          "coverage": 0.859504132231405
+        },
+        {
+          "repository": "preact",
+          "featuresTotal": 121,
+          "featuresObserved": 83,
+          "coverage": 0.6859504132231405
+        },
+        {
+          "repository": "meteor",
+          "featuresTotal": 121,
+          "featuresObserved": 101,
+          "coverage": 0.8347107438016529
+        },
+        {
+          "repository": "vue",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "karma",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "winston",
+          "featuresTotal": 121,
+          "featuresObserved": 40,
+          "coverage": 0.3305785123966942
+        },
+        {
+          "repository": "express",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "jasmine",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "angular",
+          "featuresTotal": 121,
+          "featuresObserved": 85,
+          "coverage": 0.7024793388429752
+        },
+        {
+          "repository": "html5-boilerplate",
+          "featuresTotal": 121,
+          "featuresObserved": 20,
+          "coverage": 0.1652892561983471
+        },
+        {
+          "repository": "webpack",
+          "featuresTotal": 121,
+          "featuresObserved": 95,
+          "coverage": 0.7851239669421488
+        },
+        {
+          "repository": "video.js",
+          "featuresTotal": 121,
+          "featuresObserved": 78,
+          "coverage": 0.6446280991735537
+        },
+        {
+          "repository": "react-router",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "node-semver",
+          "featuresTotal": 121,
+          "featuresObserved": 57,
+          "coverage": 0.47107438016528924
+        },
+        {
+          "repository": "sails",
+          "featuresTotal": 121,
+          "featuresObserved": 31,
+          "coverage": 0.256198347107438
+        },
+        {
+          "repository": "tailwindcss",
+          "featuresTotal": 121,
+          "featuresObserved": 39,
+          "coverage": 0.32231404958677684
+        },
+        {
+          "repository": "aws-sdk-js",
+          "featuresTotal": 121,
+          "featuresObserved": 58,
+          "coverage": 0.4793388429752066
+        },
+        {
+          "repository": "mocha",
+          "featuresTotal": 121,
+          "featuresObserved": 62,
+          "coverage": 0.512396694214876
+        },
+        {
+          "repository": "fastify",
+          "featuresTotal": 121,
+          "featuresObserved": 64,
+          "coverage": 0.5289256198347108
+        },
+        {
+          "repository": "mithril",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "lodash",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "alpine",
+          "featuresTotal": 121,
+          "featuresObserved": 70,
+          "coverage": 0.5785123966942148
+        },
+        {
+          "repository": "redux",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "next.js",
+          "featuresTotal": 121,
+          "featuresObserved": 108,
+          "coverage": 0.8925619834710744
+        },
+        {
+          "repository": "chart.js",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "moment",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "mongoose",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        },
+        {
+          "repository": "debug",
+          "featuresTotal": 121,
+          "featuresObserved": 35,
+          "coverage": 0.2892561983471074
+        },
+        {
+          "repository": "sveltekit",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "dotenv",
+          "featuresTotal": 121,
+          "featuresObserved": 15,
+          "coverage": 0.12396694214876033
+        },
+        {
+          "repository": "hexo",
+          "featuresTotal": 121,
+          "featuresObserved": 21,
+          "coverage": 0.17355371900826447
+        },
+        {
+          "repository": "backbone",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "zx",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "prettier",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "airbnb-style-guide",
+          "featuresTotal": 121,
+          "featuresObserved": 19,
+          "coverage": 0.15702479338842976
+        },
+        {
+          "repository": "nuxt",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "zustand",
+          "featuresTotal": 121,
+          "featuresObserved": 30,
+          "coverage": 0.24793388429752067
+        },
+        {
+          "repository": "htmx",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "koa",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "node",
+          "featuresTotal": 121,
+          "featuresObserved": 109,
+          "coverage": 0.9008264462809917
+        },
+        {
+          "repository": "jquery",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "commander.js",
+          "featuresTotal": 121,
+          "featuresObserved": 37,
+          "coverage": 0.30578512396694213
+        },
+        {
+          "repository": "uni-app",
+          "featuresTotal": 121,
+          "featuresObserved": 84,
+          "coverage": 0.6942148760330579
+        },
+        {
+          "repository": "ghost",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "typescript",
+          "featuresTotal": 121,
+          "featuresObserved": 110,
+          "coverage": 0.9090909090909091
+        },
+        {
+          "repository": "parcel",
+          "featuresTotal": 121,
+          "featuresObserved": 102,
+          "coverage": 0.8429752066115702
+        },
+        {
+          "repository": "axios",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        }
+      ]
+    },
+    {
+      "metric": "presence",
+      "summary": {
+        "featuresWithData": 110,
+        "totalOccurrences": 470020
+      },
+      "paretoAnalysis": [
+        {
+          "cut": 0.8,
+          "featuresCount": 33,
+          "features": [
+            "functions",
+            "assignOp_=",
+            "return",
+            "arrowFunctions",
+            "if",
+            "importDecls",
+            "exportDecls_named",
+            "binaryOp_<",
+            "binaryOp_===",
+            "binaryOp_+",
+            "exportDecls_default",
+            "ternary",
+            "classDecls",
+            "logicalOR",
+            "binaryOp_>",
+            "templateLiterals",
+            "forClassic",
+            "destructuringObject",
+            "logicalAND",
+            "updateOp_++",
+            "asyncFunctions",
+            "interpolatedTemplates",
+            "binaryOp_!==",
+            "awaitExpressions",
+            "throw",
+            "spreadElement",
+            "binaryOp_-",
+            "jsxElements",
+            "classMethods",
+            "labels",
+            "paramDestructuringObject",
+            "binaryOp_*",
+            "try"
+          ]
+        },
+        {
+          "cut": 0.9,
+          "featuresCount": 46,
+          "features": [
+            "functions",
+            "assignOp_=",
+            "return",
+            "arrowFunctions",
+            "if",
+            "importDecls",
+            "exportDecls_named",
+            "binaryOp_<",
+            "binaryOp_===",
+            "binaryOp_+",
+            "exportDecls_default",
+            "ternary",
+            "classDecls",
+            "logicalOR",
+            "binaryOp_>",
+            "templateLiterals",
+            "forClassic",
+            "destructuringObject",
+            "logicalAND",
+            "updateOp_++",
+            "asyncFunctions",
+            "interpolatedTemplates",
+            "binaryOp_!==",
+            "awaitExpressions",
+            "throw",
+            "spreadElement",
+            "binaryOp_-",
+            "jsxElements",
+            "classMethods",
+            "labels",
+            "paramDestructuringObject",
+            "binaryOp_*",
+            "try",
+            "binaryOp_%",
+            "binaryOp_/",
+            "catch",
+            "classFields",
+            "classExtends",
+            "updateOp_--",
+            "binaryOp_in",
+            "assignOp_+=",
+            "forOf",
+            "binaryOp_instanceof",
+            "forIn",
+            "binaryOp_==",
+            "binaryOp_|"
+          ]
+        },
+        {
+          "cut": 0.95,
+          "featuresCount": 60,
+          "features": [
+            "functions",
+            "assignOp_=",
+            "return",
+            "arrowFunctions",
+            "if",
+            "importDecls",
+            "exportDecls_named",
+            "binaryOp_<",
+            "binaryOp_===",
+            "binaryOp_+",
+            "exportDecls_default",
+            "ternary",
+            "classDecls",
+            "logicalOR",
+            "binaryOp_>",
+            "templateLiterals",
+            "forClassic",
+            "destructuringObject",
+            "logicalAND",
+            "updateOp_++",
+            "asyncFunctions",
+            "interpolatedTemplates",
+            "binaryOp_!==",
+            "awaitExpressions",
+            "throw",
+            "spreadElement",
+            "binaryOp_-",
+            "jsxElements",
+            "classMethods",
+            "labels",
+            "paramDestructuringObject",
+            "binaryOp_*",
+            "try",
+            "binaryOp_%",
+            "binaryOp_/",
+            "catch",
+            "classFields",
+            "classExtends",
+            "updateOp_--",
+            "binaryOp_in",
+            "assignOp_+=",
+            "forOf",
+            "binaryOp_instanceof",
+            "forIn",
+            "binaryOp_==",
+            "binaryOp_|",
+            "arrayMethod_map",
+            "paramDefault",
+            "destructuringArray",
+            "break",
+            "binaryOp_!=",
+            "switch",
+            "while",
+            "binaryOp_>=",
+            "switchCases",
+            "dynamicImports",
+            "binaryOp_&",
+            "newPromise",
+            "restElement",
+            "arrayMethod_filter"
+          ]
+        }
+      ],
+      "topFeatures": [
+        {
+          "feature": "functions",
+          "count": 44366,
+          "percentage": 0.09439172801157397,
+          "cumulativeCount": 44366,
+          "cumulativePercentage": 0.09439172801157397
+        },
+        {
+          "feature": "assignOp_=",
+          "count": 37777,
+          "percentage": 0.08037317560954853,
+          "cumulativeCount": 82143,
+          "cumulativePercentage": 0.1747649036211225
+        },
+        {
+          "feature": "return",
+          "count": 33031,
+          "percentage": 0.07027573294753414,
+          "cumulativeCount": 115174,
+          "cumulativePercentage": 0.24504063656865666
+        },
+        {
+          "feature": "arrowFunctions",
+          "count": 20643,
+          "percentage": 0.04391940768477937,
+          "cumulativeCount": 135817,
+          "cumulativePercentage": 0.288960044253436
+        },
+        {
+          "feature": "if",
+          "count": 17984,
+          "percentage": 0.038262201608442195,
+          "cumulativeCount": 153801,
+          "cumulativePercentage": 0.3272222458618782
+        },
+        {
+          "feature": "importDecls",
+          "count": 17740,
+          "percentage": 0.03774307476277605,
+          "cumulativeCount": 171541,
+          "cumulativePercentage": 0.36496532062465425
+        },
+        {
+          "feature": "exportDecls_named",
+          "count": 13731,
+          "percentage": 0.02921365048295817,
+          "cumulativeCount": 185272,
+          "cumulativePercentage": 0.39417897110761246
+        }
+      ],
+      "repositories": [
+        {
+          "repository": "core-js",
+          "featuresTotal": 121,
+          "featuresObserved": 86,
+          "coverage": 0.7107438016528925
+        },
+        {
+          "repository": "underscore",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "three.js",
+          "featuresTotal": 121,
+          "featuresObserved": 100,
+          "coverage": 0.8264462809917356
+        },
+        {
+          "repository": "js-yaml",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "chalk",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "css-loader",
+          "featuresTotal": 121,
+          "featuresObserved": 56,
+          "coverage": 0.4628099173553719
+        },
+        {
+          "repository": "eslint",
+          "featuresTotal": 121,
+          "featuresObserved": 90,
+          "coverage": 0.743801652892562
+        },
+        {
+          "repository": "shelljs",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "react",
+          "featuresTotal": 121,
+          "featuresObserved": 104,
+          "coverage": 0.859504132231405
+        },
+        {
+          "repository": "preact",
+          "featuresTotal": 121,
+          "featuresObserved": 83,
+          "coverage": 0.6859504132231405
+        },
+        {
+          "repository": "meteor",
+          "featuresTotal": 121,
+          "featuresObserved": 101,
+          "coverage": 0.8347107438016529
+        },
+        {
+          "repository": "vue",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "karma",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "winston",
+          "featuresTotal": 121,
+          "featuresObserved": 40,
+          "coverage": 0.3305785123966942
+        },
+        {
+          "repository": "express",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "jasmine",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "angular",
+          "featuresTotal": 121,
+          "featuresObserved": 85,
+          "coverage": 0.7024793388429752
+        },
+        {
+          "repository": "html5-boilerplate",
+          "featuresTotal": 121,
+          "featuresObserved": 20,
+          "coverage": 0.1652892561983471
+        },
+        {
+          "repository": "webpack",
+          "featuresTotal": 121,
+          "featuresObserved": 95,
+          "coverage": 0.7851239669421488
+        },
+        {
+          "repository": "video.js",
+          "featuresTotal": 121,
+          "featuresObserved": 78,
+          "coverage": 0.6446280991735537
+        },
+        {
+          "repository": "react-router",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "node-semver",
+          "featuresTotal": 121,
+          "featuresObserved": 57,
+          "coverage": 0.47107438016528924
+        },
+        {
+          "repository": "sails",
+          "featuresTotal": 121,
+          "featuresObserved": 31,
+          "coverage": 0.256198347107438
+        },
+        {
+          "repository": "tailwindcss",
+          "featuresTotal": 121,
+          "featuresObserved": 39,
+          "coverage": 0.32231404958677684
+        },
+        {
+          "repository": "aws-sdk-js",
+          "featuresTotal": 121,
+          "featuresObserved": 58,
+          "coverage": 0.4793388429752066
+        },
+        {
+          "repository": "mocha",
+          "featuresTotal": 121,
+          "featuresObserved": 62,
+          "coverage": 0.512396694214876
+        },
+        {
+          "repository": "fastify",
+          "featuresTotal": 121,
+          "featuresObserved": 64,
+          "coverage": 0.5289256198347108
+        },
+        {
+          "repository": "mithril",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "lodash",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "alpine",
+          "featuresTotal": 121,
+          "featuresObserved": 70,
+          "coverage": 0.5785123966942148
+        },
+        {
+          "repository": "redux",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "next.js",
+          "featuresTotal": 121,
+          "featuresObserved": 108,
+          "coverage": 0.8925619834710744
+        },
+        {
+          "repository": "chart.js",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "moment",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "mongoose",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        },
+        {
+          "repository": "debug",
+          "featuresTotal": 121,
+          "featuresObserved": 35,
+          "coverage": 0.2892561983471074
+        },
+        {
+          "repository": "sveltekit",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "dotenv",
+          "featuresTotal": 121,
+          "featuresObserved": 15,
+          "coverage": 0.12396694214876033
+        },
+        {
+          "repository": "hexo",
+          "featuresTotal": 121,
+          "featuresObserved": 21,
+          "coverage": 0.17355371900826447
+        },
+        {
+          "repository": "backbone",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "zx",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "prettier",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "airbnb-style-guide",
+          "featuresTotal": 121,
+          "featuresObserved": 19,
+          "coverage": 0.15702479338842976
+        },
+        {
+          "repository": "nuxt",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "zustand",
+          "featuresTotal": 121,
+          "featuresObserved": 30,
+          "coverage": 0.24793388429752067
+        },
+        {
+          "repository": "htmx",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "koa",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "node",
+          "featuresTotal": 121,
+          "featuresObserved": 109,
+          "coverage": 0.9008264462809917
+        },
+        {
+          "repository": "jquery",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "commander.js",
+          "featuresTotal": 121,
+          "featuresObserved": 37,
+          "coverage": 0.30578512396694213
+        },
+        {
+          "repository": "uni-app",
+          "featuresTotal": 121,
+          "featuresObserved": 84,
+          "coverage": 0.6942148760330579
+        },
+        {
+          "repository": "ghost",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "typescript",
+          "featuresTotal": 121,
+          "featuresObserved": 110,
+          "coverage": 0.9090909090909091
+        },
+        {
+          "repository": "parcel",
+          "featuresTotal": 121,
+          "featuresObserved": 102,
+          "coverage": 0.8429752066115702
+        },
+        {
+          "repository": "axios",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        }
+      ]
+    },
+    {
+      "metric": "perKLOC",
+      "summary": {
+        "featuresWithData": 110,
+        "totalOccurrences": 21612.332332795206
+      },
+      "paretoAnalysis": [
+        {
+          "cut": 0.8,
+          "featuresCount": 21,
+          "features": [
+            "assignOp_=",
+            "functions",
+            "arrowFunctions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_===",
+            "importDecls",
+            "awaitExpressions",
+            "binaryOp_/",
+            "templateLiterals",
+            "logicalAND",
+            "logicalOR",
+            "labels",
+            "ternary",
+            "interpolatedTemplates",
+            "asyncFunctions",
+            "jsxElements",
+            "binaryOp_|",
+            "binaryOp_<",
+            "binaryOp_!=="
+          ]
+        },
+        {
+          "cut": 0.9,
+          "featuresCount": 34,
+          "features": [
+            "assignOp_=",
+            "functions",
+            "arrowFunctions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_===",
+            "importDecls",
+            "awaitExpressions",
+            "binaryOp_/",
+            "templateLiterals",
+            "logicalAND",
+            "logicalOR",
+            "labels",
+            "ternary",
+            "interpolatedTemplates",
+            "asyncFunctions",
+            "jsxElements",
+            "binaryOp_|",
+            "binaryOp_<",
+            "binaryOp_!==",
+            "exportDecls_named",
+            "binaryOp_>>",
+            "destructuringObject",
+            "updateOp_++",
+            "binaryOp_>",
+            "binaryOp_*",
+            "binaryOp_-",
+            "spreadElement",
+            "switchCases",
+            "throw",
+            "binaryOp_==",
+            "try",
+            "forClassic"
+          ]
+        },
+        {
+          "cut": 0.95,
+          "featuresCount": 46,
+          "features": [
+            "assignOp_=",
+            "functions",
+            "arrowFunctions",
+            "return",
+            "if",
+            "binaryOp_+",
+            "binaryOp_===",
+            "importDecls",
+            "awaitExpressions",
+            "binaryOp_/",
+            "templateLiterals",
+            "logicalAND",
+            "logicalOR",
+            "labels",
+            "ternary",
+            "interpolatedTemplates",
+            "asyncFunctions",
+            "jsxElements",
+            "binaryOp_|",
+            "binaryOp_<",
+            "binaryOp_!==",
+            "exportDecls_named",
+            "binaryOp_>>",
+            "destructuringObject",
+            "updateOp_++",
+            "binaryOp_>",
+            "binaryOp_*",
+            "binaryOp_-",
+            "spreadElement",
+            "switchCases",
+            "throw",
+            "binaryOp_==",
+            "try",
+            "forClassic",
+            "exportDecls_default",
+            "classMethods",
+            "arrayMethod_map",
+            "catch",
+            "assignOp_+=",
+            "break",
+            "taggedTemplates",
+            "paramDestructuringObject",
+            "forOf",
+            "binaryOp_!=",
+            "classDecls",
+            "binaryOp_&"
+          ]
+        }
+      ],
+      "topFeatures": [
+        {
+          "feature": "assignOp_=",
+          "count": 2851.198520107598,
+          "percentage": 0.13192461027360305,
+          "cumulativeCount": 2851.198520107598,
+          "cumulativePercentage": 0.13192461027360305
+        },
+        {
+          "feature": "functions",
+          "count": 2630.817943911626,
+          "percentage": 0.12172762769891075,
+          "cumulativeCount": 5482.016464019224,
+          "cumulativePercentage": 0.2536522379725138
+        },
+        {
+          "feature": "arrowFunctions",
+          "count": 1727.6008328431476,
+          "percentage": 0.0799358813403787,
+          "cumulativeCount": 7209.617296862372,
+          "cumulativePercentage": 0.33358811931289256
+        },
+        {
+          "feature": "return",
+          "count": 1521.615123157286,
+          "percentage": 0.07040494749603407,
+          "cumulativeCount": 8731.232420019658,
+          "cumulativePercentage": 0.4039930668089266
+        },
+        {
+          "feature": "if",
+          "count": 1381.1959340244407,
+          "percentage": 0.06390776861822416,
+          "cumulativeCount": 10112.4283540441,
+          "cumulativePercentage": 0.4679008354271508
+        },
+        {
+          "feature": "binaryOp_+",
+          "count": 927.0030341978495,
+          "percentage": 0.04289231814148939,
+          "cumulativeCount": 11039.431388241948,
+          "cumulativePercentage": 0.5107931535686402
+        },
+        {
+          "feature": "binaryOp_===",
+          "count": 637.1082264220282,
+          "percentage": 0.029478920489079328,
+          "cumulativeCount": 11676.539614663976,
+          "cumulativePercentage": 0.5402720740577195
+        }
+      ],
+      "repositories": [
+        {
+          "repository": "core-js",
+          "featuresTotal": 121,
+          "featuresObserved": 86,
+          "coverage": 0.7107438016528925
+        },
+        {
+          "repository": "underscore",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "three.js",
+          "featuresTotal": 121,
+          "featuresObserved": 100,
+          "coverage": 0.8264462809917356
+        },
+        {
+          "repository": "js-yaml",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "chalk",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "css-loader",
+          "featuresTotal": 121,
+          "featuresObserved": 56,
+          "coverage": 0.4628099173553719
+        },
+        {
+          "repository": "eslint",
+          "featuresTotal": 121,
+          "featuresObserved": 90,
+          "coverage": 0.743801652892562
+        },
+        {
+          "repository": "shelljs",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "react",
+          "featuresTotal": 121,
+          "featuresObserved": 104,
+          "coverage": 0.859504132231405
+        },
+        {
+          "repository": "preact",
+          "featuresTotal": 121,
+          "featuresObserved": 83,
+          "coverage": 0.6859504132231405
+        },
+        {
+          "repository": "meteor",
+          "featuresTotal": 121,
+          "featuresObserved": 101,
+          "coverage": 0.8347107438016529
+        },
+        {
+          "repository": "vue",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "karma",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "winston",
+          "featuresTotal": 121,
+          "featuresObserved": 40,
+          "coverage": 0.3305785123966942
+        },
+        {
+          "repository": "express",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "jasmine",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "angular",
+          "featuresTotal": 121,
+          "featuresObserved": 85,
+          "coverage": 0.7024793388429752
+        },
+        {
+          "repository": "html5-boilerplate",
+          "featuresTotal": 121,
+          "featuresObserved": 20,
+          "coverage": 0.1652892561983471
+        },
+        {
+          "repository": "webpack",
+          "featuresTotal": 121,
+          "featuresObserved": 95,
+          "coverage": 0.7851239669421488
+        },
+        {
+          "repository": "video.js",
+          "featuresTotal": 121,
+          "featuresObserved": 78,
+          "coverage": 0.6446280991735537
+        },
+        {
+          "repository": "react-router",
+          "featuresTotal": 121,
+          "featuresObserved": 51,
+          "coverage": 0.4214876033057851
+        },
+        {
+          "repository": "node-semver",
+          "featuresTotal": 121,
+          "featuresObserved": 57,
+          "coverage": 0.47107438016528924
+        },
+        {
+          "repository": "sails",
+          "featuresTotal": 121,
+          "featuresObserved": 31,
+          "coverage": 0.256198347107438
+        },
+        {
+          "repository": "tailwindcss",
+          "featuresTotal": 121,
+          "featuresObserved": 39,
+          "coverage": 0.32231404958677684
+        },
+        {
+          "repository": "aws-sdk-js",
+          "featuresTotal": 121,
+          "featuresObserved": 58,
+          "coverage": 0.4793388429752066
+        },
+        {
+          "repository": "mocha",
+          "featuresTotal": 121,
+          "featuresObserved": 62,
+          "coverage": 0.512396694214876
+        },
+        {
+          "repository": "fastify",
+          "featuresTotal": 121,
+          "featuresObserved": 64,
+          "coverage": 0.5289256198347108
+        },
+        {
+          "repository": "mithril",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "lodash",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "alpine",
+          "featuresTotal": 121,
+          "featuresObserved": 70,
+          "coverage": 0.5785123966942148
+        },
+        {
+          "repository": "redux",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "next.js",
+          "featuresTotal": 121,
+          "featuresObserved": 108,
+          "coverage": 0.8925619834710744
+        },
+        {
+          "repository": "chart.js",
+          "featuresTotal": 121,
+          "featuresObserved": 73,
+          "coverage": 0.6033057851239669
+        },
+        {
+          "repository": "moment",
+          "featuresTotal": 121,
+          "featuresObserved": 46,
+          "coverage": 0.38016528925619836
+        },
+        {
+          "repository": "mongoose",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        },
+        {
+          "repository": "debug",
+          "featuresTotal": 121,
+          "featuresObserved": 35,
+          "coverage": 0.2892561983471074
+        },
+        {
+          "repository": "sveltekit",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "dotenv",
+          "featuresTotal": 121,
+          "featuresObserved": 15,
+          "coverage": 0.12396694214876033
+        },
+        {
+          "repository": "hexo",
+          "featuresTotal": 121,
+          "featuresObserved": 21,
+          "coverage": 0.17355371900826447
+        },
+        {
+          "repository": "backbone",
+          "featuresTotal": 121,
+          "featuresObserved": 45,
+          "coverage": 0.371900826446281
+        },
+        {
+          "repository": "zx",
+          "featuresTotal": 121,
+          "featuresObserved": 54,
+          "coverage": 0.4462809917355372
+        },
+        {
+          "repository": "prettier",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "airbnb-style-guide",
+          "featuresTotal": 121,
+          "featuresObserved": 19,
+          "coverage": 0.15702479338842976
+        },
+        {
+          "repository": "nuxt",
+          "featuresTotal": 121,
+          "featuresObserved": 49,
+          "coverage": 0.4049586776859504
+        },
+        {
+          "repository": "zustand",
+          "featuresTotal": 121,
+          "featuresObserved": 30,
+          "coverage": 0.24793388429752067
+        },
+        {
+          "repository": "htmx",
+          "featuresTotal": 121,
+          "featuresObserved": 0,
+          "coverage": 0
+        },
+        {
+          "repository": "koa",
+          "featuresTotal": 121,
+          "featuresObserved": 33,
+          "coverage": 0.2727272727272727
+        },
+        {
+          "repository": "node",
+          "featuresTotal": 121,
+          "featuresObserved": 109,
+          "coverage": 0.9008264462809917
+        },
+        {
+          "repository": "jquery",
+          "featuresTotal": 121,
+          "featuresObserved": 63,
+          "coverage": 0.5206611570247934
+        },
+        {
+          "repository": "commander.js",
+          "featuresTotal": 121,
+          "featuresObserved": 37,
+          "coverage": 0.30578512396694213
+        },
+        {
+          "repository": "uni-app",
+          "featuresTotal": 121,
+          "featuresObserved": 84,
+          "coverage": 0.6942148760330579
+        },
+        {
+          "repository": "ghost",
+          "featuresTotal": 121,
+          "featuresObserved": 91,
+          "coverage": 0.7520661157024794
+        },
+        {
+          "repository": "typescript",
+          "featuresTotal": 121,
+          "featuresObserved": 110,
+          "coverage": 0.9090909090909091
+        },
+        {
+          "repository": "parcel",
+          "featuresTotal": 121,
+          "featuresObserved": 102,
+          "coverage": 0.8429752066115702
+        },
+        {
+          "repository": "axios",
+          "featuresTotal": 121,
+          "featuresObserved": 72,
+          "coverage": 0.5950413223140496
+        }
+      ]
+    }
+  ]
+}

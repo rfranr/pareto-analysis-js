@@ -1,0 +1,76 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Output directories
+build/
+dist/
+
+# Generated files
+*.json
+*.md
+*.csv
+*.png
+*.svg
+!package.json
+!README.md
+!package-lock.json
+
+# Repository clones (keep structure but ignore content)
+repos/*/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# TypeScript compiled output
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+tmp/
+temp/
+
+# allow the docs folder
+!docs/
+!docs/**
+
+# re-allow common file types you want to publish
+!docs/**/*.md
+!docs/**/*.png
+!docs/**/*.svg
+!docs/**/*.csv
