@@ -3,4 +3,6 @@ description: Exploring the 80/20 rule in real-world JavaScript repositories
 theme: jekyll-theme-cayman
 markdown: kramdown
 show_downloads: false
+plugins:
+  - jekyll-sitemap
 
