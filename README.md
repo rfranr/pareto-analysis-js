@@ -7,6 +7,12 @@ I built it mainly to visualize some ideas around language usage and the Pareto e
 
 A small experimental tool to explore how JavaScript features are actually used across real-world repositories — and how the Pareto principle (80/20 rule) might apply to code.
 
+You can explore the reports here:
+- [Pareto Analysis](https://rfranr.github.io/pareto-analysis-js/reports/pareto-analysis)
+- [Charts](https://rfranr.github.io/pareto-analysis-js/charts/charts)
+
+![Aggregate Chart Example](docs/charts/comparison-perKLOC.png)
+
 ## Overview
 
 This project performs a lightweight static analysis on JavaScript/JSX codebases to observe:
