@@ -298,16 +298,31 @@ function generateMarkdownReport(analysisResults, options = {}) {
     // Repository breakdown (optional)
     if (includeRepositoryBreakdown) {
       markdown += `### Repository Breakdown\n\n`;
-      markdown += '| Repository | Features Total | Features Observed | Catalog Usage |\n';
-      markdown += '|------------|----------------|-------------------|---------------|\n';
       
       for (const repo of repositories) {
         const catalogUsage = ((repo.featuresObserved / catalogSize) * 100).toFixed(1);
         
-        markdown += `| ${repo.repository} | ${repo.featuresTotal} | `;
-        markdown += `${repo.featuresObserved} | ${catalogUsage}% |\n`;
+        markdown += `#### ${repo.repository}\n\n`;
+        markdown += `- **Features Total:** ${repo.featuresTotal}\n`;
+        markdown += `- **Features Observed:** ${repo.featuresObserved}\n`;
+        markdown += `- **Catalog Usage:** ${catalogUsage}%\n\n`;
+        
+        // Get top features for this repository
+        const topFeatures = Object.entries(repo.series)
+          .filter(([, value]) => typeof value === 'number' && value > 0)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, topCount);
+        
+        if (topFeatures.length > 0) {
+          markdown += `**Top ${Math.min(topCount, topFeatures.length)} Features:**\n`;
+          topFeatures.forEach(([feature, count], index) => {
+            markdown += `${index + 1}. **${feature}**: ${count}\n`;
+          });
+          markdown += '\n';
+        }
+        
+        markdown += '---\n\n';
       }
-      markdown += '\n';
     }
   }
 
