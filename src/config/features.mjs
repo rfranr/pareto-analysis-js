@@ -147,6 +147,16 @@ export function buildFeatureCatalog() {
   
   // Add regexp flags
   REGEXP_FLAGS.forEach(flag => features.push(`regexpFlag_${flag}`));
+
+  // TypeScript-specific features (real runtime expressions)
+  const TS_FEATURES = [
+    'tsAsExpression',
+    'tsSatisfiesExpression',
+    'tsNonNullExpression',
+    'tsTypeAssertion'
+  ];
+  features.push(...TS_FEATURES);
+
   
   return Array.from(new Set(features)).sort();
 }
@@ -155,3 +165,15 @@ export function buildFeatureCatalog() {
  * The master feature catalog used for consistent analysis across repositories
  */
 export const MASTER_FEATURE_CATALOG = buildFeatureCatalog();
+
+// TODO: add support for feature groups in reporting
+/**
+ * Feature groups for aggregated reporting
+ */
+// export const FEATURE_GROUPS = {
+//   core: CORE_FEATURES,
+//   operators: [...BINARY_OPERATORS, ...ASSIGNMENT_OPERATORS, ...UPDATE_OPERATORS],
+//   arrays: ARRAY_METHODS.map(m => `arrayMethod_${m}`),
+//   regexp: REGEXP_FLAGS.map(f => `regexpFlag_${f}`),
+//   ts: ['tsAsExpression', 'tsSatisfiesExpression', 'tsNonNullExpression', 'tsTypeAssertion']
+// };

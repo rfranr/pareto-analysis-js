@@ -1,6 +1,6 @@
 # Pareto Analysis Charts
 
-Generated: 2025-10-05T07:58:08.327Z
+Generated: 2025-10-05T22:40:09.387Z
 
 ## Repository Analysis
 
@@ -9,369 +9,378 @@ Generated: 2025-10-05T07:58:08.327Z
 ![core-js Pareto Analysis](core-js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 4052
-- Features observed: 86/121 (71.1%)
-- Total LOC: 117895
+- Files analyzed: 4096
+- Features observed: 87/125 (69.6%)
+- Total LOC: 140730
 
 ### underscore
 
 ![underscore Pareto Analysis](underscore-overlay.png)
 
 **Statistics:**
-- Files analyzed: 187
-- Features observed: 49/121 (40.5%)
-- Total LOC: 13580
+- Files analyzed: 198
+- Features observed: 54/125 (43.2%)
+- Total LOC: 35217
 
 ### three.js
 
 ![three.js Pareto Analysis](three.js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 1535
-- Features observed: 100/121 (82.6%)
-- Total LOC: 464524
+- Files analyzed: 1573
+- Features observed: 100/125 (80.0%)
+- Total LOC: 485264
 
 ### js-yaml
 
 ![js-yaml Pareto Analysis](js-yaml-overlay.png)
 
 **Statistics:**
-- Files analyzed: 130
-- Features observed: 46/121 (38.0%)
-- Total LOC: 4617
+- Files analyzed: 132
+- Features observed: 46/125 (36.8%)
+- Total LOC: 4707
 
 ### chalk
 
 ![chalk Pareto Analysis](chalk-overlay.png)
 
 **Statistics:**
-- Files analyzed: 11
-- Features observed: 45/121 (37.2%)
-- Total LOC: 650
+- Files analyzed: 14
+- Features observed: 45/125 (36.0%)
+- Total LOC: 1240
 
 ### css-loader
 
 ![css-loader Pareto Analysis](css-loader-overlay.png)
 
 **Statistics:**
-- Files analyzed: 211
-- Features observed: 56/121 (46.3%)
-- Total LOC: 11228
+- Files analyzed: 227
+- Features observed: 56/125 (44.8%)
+- Total LOC: 74477
 
 ### eslint
 
 ![eslint Pareto Analysis](eslint-overlay.png)
 
 **Statistics:**
-- Files analyzed: 709
-- Features observed: 90/121 (74.4%)
-- Total LOC: 111302
+- Files analyzed: 820
+- Features observed: 95/125 (76.0%)
+- Total LOC: 122578
 
 ### shelljs
 
 ![shelljs Pareto Analysis](shelljs-overlay.png)
 
 **Statistics:**
-- Files analyzed: 87
-- Features observed: 54/121 (44.6%)
-- Total LOC: 11784
+- Files analyzed: 91
+- Features observed: 54/125 (43.2%)
+- Total LOC: 18543
 
 ### react
 
 ![react Pareto Analysis](react-overlay.png)
 
 **Statistics:**
-- Files analyzed: 3758
-- Features observed: 104/121 (86.0%)
-- Total LOC: 627011
+- Files analyzed: 4367
+- Features observed: 109/125 (87.2%)
+- Total LOC: 717992
 
 ### preact
 
 ![preact Pareto Analysis](preact-overlay.png)
 
 **Statistics:**
-- Files analyzed: 202
-- Features observed: 83/121 (68.6%)
-- Total LOC: 44088
+- Files analyzed: 248
+- Features observed: 85/125 (68.0%)
+- Total LOC: 65379
 
 ### meteor
 
 ![meteor Pareto Analysis](meteor-overlay.png)
 
 **Statistics:**
-- Files analyzed: 1491
-- Features observed: 101/121 (83.5%)
-- Total LOC: 278388
+- Files analyzed: 1742
+- Features observed: 105/125 (84.0%)
+- Total LOC: 356341
 
 ### vue
 
 ![vue Pareto Analysis](vue-overlay.png)
 
 **Statistics:**
-- Files analyzed: 36
-- Features observed: 51/121 (42.1%)
-- Total LOC: 2667
+- Files analyzed: 550
+- Features observed: 92/125 (73.6%)
+- Total LOC: 146765
 
 ### karma
 
 ![karma Pareto Analysis](karma-overlay.png)
 
 **Statistics:**
-- Files analyzed: 110
-- Features observed: 63/121 (52.1%)
-- Total LOC: 17812
+- Files analyzed: 114
+- Features observed: 63/125 (50.4%)
+- Total LOC: 33022
 
 ### winston
 
 ![winston Pareto Analysis](winston-overlay.png)
 
 **Statistics:**
-- Files analyzed: 62
-- Features observed: 40/121 (33.1%)
-- Total LOC: 5049
+- Files analyzed: 69
+- Features observed: 42/125 (33.6%)
+- Total LOC: 13224
 
 ### express
 
 ![express Pareto Analysis](express-overlay.png)
 
 **Statistics:**
-- Files analyzed: 133
-- Features observed: 33/121 (27.3%)
-- Total LOC: 18510
+- Files analyzed: 134
+- Features observed: 33/125 (26.4%)
+- Total LOC: 18610
 
 ### jasmine
 
 ![jasmine Pareto Analysis](jasmine-overlay.png)
 
 **Statistics:**
-- Files analyzed: 252
-- Features observed: 73/121 (60.3%)
-- Total LOC: 46282
+- Files analyzed: 258
+- Features observed: 74/125 (59.2%)
+- Total LOC: 46418
 
 ### angular
 
 ![angular Pareto Analysis](angular-overlay.png)
 
 **Statistics:**
-- Files analyzed: 867
-- Features observed: 85/121 (70.2%)
-- Total LOC: 50918
+- Files analyzed: 6155
+- Features observed: 106/125 (84.8%)
+- Total LOC: 1025040
 
 ### html5-boilerplate
 
 ![html5-boilerplate Pareto Analysis](html5-boilerplate-overlay.png)
 
 **Statistics:**
-- Files analyzed: 8
-- Features observed: 20/121 (16.5%)
-- Total LOC: 400
+- Files analyzed: 15
+- Features observed: 20/125 (16.0%)
+- Total LOC: 5128
 
 ### webpack
 
 ![webpack Pareto Analysis](webpack-overlay.png)
 
 **Statistics:**
-- Files analyzed: 7105
-- Features observed: 95/121 (78.5%)
-- Total LOC: 116354
+- Files analyzed: 7470
+- Features observed: 101/125 (80.8%)
+- Total LOC: 233777
 
 ### video.js
 
 ![video.js Pareto Analysis](video.js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 224
-- Features observed: 78/121 (64.5%)
-- Total LOC: 97377
+- Files analyzed: 280
+- Features observed: 78/125 (62.4%)
+- Total LOC: 118193
 
 ### react-router
 
 ![react-router Pareto Analysis](react-router-overlay.png)
 
 **Statistics:**
-- Files analyzed: 65
-- Features observed: 51/121 (42.1%)
-- Total LOC: 2207
+- Files analyzed: 621
+- Features observed: 88/125 (70.4%)
+- Total LOC: 139979
 
 ### node-semver
 
 ![node-semver Pareto Analysis](node-semver-overlay.png)
 
 **Statistics:**
-- Files analyzed: 122
-- Features observed: 57/121 (47.1%)
-- Total LOC: 6178
+- Files analyzed: 127
+- Features observed: 57/125 (45.6%)
+- Total LOC: 6819
 
 ### sails
 
 ![sails Pareto Analysis](sails-overlay.png)
 
 **Statistics:**
-- Files analyzed: 121
-- Features observed: 31/121 (25.6%)
-- Total LOC: 22250
+- Files analyzed: 180
+- Features observed: 45/125 (36.0%)
+- Total LOC: 23331
 
 ### tailwindcss
 
 ![tailwindcss Pareto Analysis](tailwindcss-overlay.png)
 
 **Statistics:**
-- Files analyzed: 17
-- Features observed: 39/121 (32.2%)
-- Total LOC: 644
+- Files analyzed: 351
+- Features observed: 98/125 (78.4%)
+- Total LOC: 113405
 
 ### aws-sdk-js
 
 ![aws-sdk-js Pareto Analysis](aws-sdk-js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 601
-- Features observed: 58/121 (47.9%)
-- Total LOC: 54207
+- Files analyzed: 4434
+- Features observed: 66/125 (52.8%)
+- Total LOC: 3439868
 
 ### mocha
 
 ![mocha Pareto Analysis](mocha-overlay.png)
 
 **Statistics:**
-- Files analyzed: 377
-- Features observed: 62/121 (51.2%)
-- Total LOC: 29018
+- Files analyzed: 414
+- Features observed: 62/125 (49.6%)
+- Total LOC: 38061
 
 ### fastify
 
 ![fastify Pareto Analysis](fastify-overlay.png)
 
 **Statistics:**
-- Files analyzed: 221
-- Features observed: 64/121 (52.9%)
-- Total LOC: 57430
+- Files analyzed: 262
+- Features observed: 70/125 (56.0%)
+- Total LOC: 64968
 
 ### mithril
 
 ![mithril Pareto Analysis](mithril-overlay.png)
 
 **Statistics:**
-- Files analyzed: 100
-- Features observed: 63/121 (52.1%)
-- Total LOC: 26049
+- Files analyzed: 102
+- Features observed: 63/125 (50.4%)
+- Total LOC: 30407
 
 ### lodash
 
 ![lodash Pareto Analysis](lodash-overlay.png)
 
 **Statistics:**
-- Files analyzed: 14
-- Features observed: 54/121 (44.6%)
-- Total LOC: 50781
+- Files analyzed: 17
+- Features observed: 54/125 (43.2%)
+- Total LOC: 56792
 
 ### alpine
 
 ![alpine Pareto Analysis](alpine-overlay.png)
 
 **Statistics:**
-- Files analyzed: 183
-- Features observed: 70/121 (57.9%)
-- Total LOC: 24350
+- Files analyzed: 203
+- Features observed: 70/125 (56.0%)
+- Total LOC: 34772
+
+### tests
+
+![tests Pareto Analysis](tests-overlay.png)
+
+**Statistics:**
+- Files analyzed: 1
+- Features observed: 27/125 (21.6%)
+- Total LOC: 364
 
 ### redux
 
 ![redux Pareto Analysis](redux-overlay.png)
 
 **Statistics:**
-- Files analyzed: 142
-- Features observed: 54/121 (44.6%)
-- Total LOC: 5953
+- Files analyzed: 220
+- Features observed: 67/125 (53.6%)
+- Total LOC: 82491
 
 ### next.js
 
 ![next.js Pareto Analysis](next.js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 9463
-- Features observed: 108/121 (89.3%)
-- Total LOC: 873469
+- Files analyzed: 13980
+- Features observed: 111/125 (88.8%)
+- Total LOC: 1278242
 
 ### chart.js
 
 ![chart.js Pareto Analysis](chart.js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 649
-- Features observed: 73/121 (60.3%)
-- Total LOC: 64859
+- Files analyzed: 886
+- Features observed: 77/125 (61.6%)
+- Total LOC: 82039
 
 ### moment
 
 ![moment Pareto Analysis](moment-overlay.png)
 
 **Statistics:**
-- Files analyzed: 511
-- Features observed: 46/121 (38.0%)
-- Total LOC: 162357
+- Files analyzed: 527
+- Features observed: 47/125 (37.6%)
+- Total LOC: 177516
 
 ### mongoose
 
 ![mongoose Pareto Analysis](mongoose-overlay.png)
 
 **Statistics:**
-- Files analyzed: 231
-- Features observed: 72/121 (59.5%)
-- Total LOC: 100181
+- Files analyzed: 308
+- Features observed: 76/125 (60.8%)
+- Total LOC: 119531
 
 ### debug
 
 ![debug Pareto Analysis](debug-overlay.png)
 
 **Statistics:**
-- Files analyzed: 7
-- Features observed: 35/121 (28.9%)
-- Total LOC: 1081
+- Files analyzed: 8
+- Features observed: 35/125 (28.0%)
+- Total LOC: 1146
 
 ### sveltekit
 
 ![sveltekit Pareto Analysis](sveltekit-overlay.png)
 
 **Statistics:**
-- Files analyzed: 934
-- Features observed: 91/121 (75.2%)
-- Total LOC: 53467
+- Files analyzed: 1229
+- Features observed: 93/125 (74.4%)
+- Total LOC: 65295
 
 ### dotenv
 
 ![dotenv Pareto Analysis](dotenv-overlay.png)
 
 **Statistics:**
-- Files analyzed: 10
-- Features observed: 15/121 (12.4%)
-- Total LOC: 1352
+- Files analyzed: 15
+- Features observed: 19/125 (15.2%)
+- Total LOC: 18057
 
 ### hexo
 
 ![hexo Pareto Analysis](hexo-overlay.png)
 
 **Statistics:**
-- Files analyzed: 2
-- Features observed: 21/121 (17.4%)
-- Total LOC: 267
+- Files analyzed: 128
+- Features observed: 50/125 (40.0%)
+- Total LOC: 21815
 
 ### backbone
 
 ![backbone Pareto Analysis](backbone-overlay.png)
 
 **Statistics:**
-- Files analyzed: 20
-- Features observed: 45/121 (37.2%)
-- Total LOC: 9594
+- Files analyzed: 25
+- Features observed: 45/125 (36.0%)
+- Total LOC: 17127
 
 ### zx
 
 ![zx Pareto Analysis](zx-overlay.png)
 
 **Statistics:**
-- Files analyzed: 42
-- Features observed: 54/121 (44.6%)
-- Total LOC: 5273
+- Files analyzed: 76
+- Features observed: 79/125 (63.2%)
+- Total LOC: 17849
 
 ### prettier
 
@@ -379,7 +388,7 @@ Generated: 2025-10-05T07:58:08.327Z
 
 **Statistics:**
 - Files analyzed: N/A
-- Features observed: 0/121 (0.0%)
+- Features observed: 0/125 (0.0%)
 - Total LOC: N/A
 
 ### airbnb-style-guide
@@ -387,27 +396,27 @@ Generated: 2025-10-05T07:58:08.327Z
 ![airbnb-style-guide Pareto Analysis](airbnb-style-guide-overlay.png)
 
 **Statistics:**
-- Files analyzed: 28
-- Features observed: 19/121 (15.7%)
-- Total LOC: 3296
+- Files analyzed: 33
+- Features observed: 19/125 (15.2%)
+- Total LOC: 3753
 
 ### nuxt
 
 ![nuxt Pareto Analysis](nuxt-overlay.png)
 
 **Statistics:**
-- Files analyzed: 16
-- Features observed: 49/121 (40.5%)
-- Total LOC: 1003
+- Files analyzed: 599
+- Features observed: 82/125 (65.6%)
+- Total LOC: 53615
 
 ### zustand
 
 ![zustand Pareto Analysis](zustand-overlay.png)
 
 **Statistics:**
-- Files analyzed: 16
-- Features observed: 30/121 (24.8%)
-- Total LOC: 825
+- Files analyzed: 43
+- Features observed: 52/125 (41.6%)
+- Total LOC: 2761
 
 ### htmx
 
@@ -415,7 +424,7 @@ Generated: 2025-10-05T07:58:08.327Z
 
 **Statistics:**
 - Files analyzed: N/A
-- Features observed: 0/121 (0.0%)
+- Features observed: 0/125 (0.0%)
 - Total LOC: N/A
 
 ### koa
@@ -423,81 +432,81 @@ Generated: 2025-10-05T07:58:08.327Z
 ![koa Pareto Analysis](koa-overlay.png)
 
 **Statistics:**
-- Files analyzed: 74
-- Features observed: 33/121 (27.3%)
-- Total LOC: 5247
+- Files analyzed: 77
+- Features observed: 35/125 (28.0%)
+- Total LOC: 10644
 
 ### node
 
 ![node Pareto Analysis](node-overlay.png)
 
 **Statistics:**
-- Files analyzed: 17879
-- Features observed: 109/121 (90.1%)
-- Total LOC: 1448356
+- Files analyzed: 18532
+- Features observed: 111/125 (88.8%)
+- Total LOC: 1553419
 
 ### jquery
 
 ![jquery Pareto Analysis](jquery-overlay.png)
 
 **Statistics:**
-- Files analyzed: 198
-- Features observed: 63/121 (52.1%)
-- Total LOC: 51425
+- Files analyzed: 203
+- Features observed: 63/125 (50.4%)
+- Total LOC: 62975
 
 ### commander.js
 
 ![commander.js Pareto Analysis](commander.js-overlay.png)
 
 **Statistics:**
-- Files analyzed: 163
-- Features observed: 37/121 (30.6%)
-- Total LOC: 14391
+- Files analyzed: 173
+- Features observed: 38/125 (30.4%)
+- Total LOC: 23364
 
 ### uni-app
 
 ![uni-app Pareto Analysis](uni-app-overlay.png)
 
 **Statistics:**
-- Files analyzed: 104
-- Features observed: 84/121 (69.4%)
-- Total LOC: 92327
+- Files analyzed: 2212
+- Features observed: 92/125 (73.6%)
+- Total LOC: 308981
 
 ### ghost
 
 ![ghost Pareto Analysis](ghost-overlay.png)
 
 **Statistics:**
-- Files analyzed: 2921
-- Features observed: 91/121 (75.2%)
-- Total LOC: 355294
+- Files analyzed: 3882
+- Features observed: 96/125 (76.8%)
+- Total LOC: 574578
 
 ### typescript
 
 ![typescript Pareto Analysis](typescript-overlay.png)
 
 **Statistics:**
-- Files analyzed: 16961
-- Features observed: 110/121 (90.9%)
-- Total LOC: 2501807
+- Files analyzed: 40847
+- Features observed: 113/125 (90.4%)
+- Total LOC: 3604067
 
 ### parcel
 
 ![parcel Pareto Analysis](parcel-overlay.png)
 
 **Statistics:**
-- Files analyzed: 2774
-- Features observed: 102/121 (84.3%)
-- Total LOC: 168358
+- Files analyzed: 3646
+- Features observed: 104/125 (83.2%)
+- Total LOC: 192181
 
 ### axios
 
 ![axios Pareto Analysis](axios-overlay.png)
 
 **Statistics:**
-- Files analyzed: 99
-- Features observed: 72/121 (59.5%)
-- Total LOC: 10608
+- Files analyzed: 122
+- Features observed: 76/125 (60.8%)
+- Total LOC: 13315
 
 ## Metric Comparisons
 
@@ -515,7 +524,7 @@ Generated: 2025-10-05T07:58:08.327Z
 
 ## Aggregate Analysis
 
-Combined analysis across all 55 repositories:
+Combined analysis across all 56 repositories:
 
 ### Aggregate Total Occurrences
 

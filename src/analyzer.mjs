@@ -9,9 +9,9 @@ import path from 'node:path';
 import { PARETO } from './config/constants.mjs';
 import { ARRAY_METHODS, MASTER_FEATURE_CATALOG } from './config/features.mjs';
 import {
-  createJsxWalkBase,
+  createExtendedWalkBase,
   isFunctionNode,
-  parseJavaScript,
+  parseFile,
   withAncestors
 } from './utils/ast-utils.mjs';
 import {
@@ -30,11 +30,12 @@ async function analyzeFile(filePath) {
   const code = await readFileContent(filePath);
   const comments = [];
   const featureTracker = new FeatureTracker();
+  const missingDetectors = {};
   
   try {
-    const ast = parseJavaScript(code, { filename: filePath, comments });
-    analyzeAst(ast, featureTracker);
-    
+    const ast = parseFile(code, { filename: filePath, comments });
+    analyzeAst(ast, featureTracker, missingDetectors);
+
     const lineCount = countLines(code);
     
     return {
@@ -44,7 +45,8 @@ async function analyzeFile(filePath) {
       loc: lineCount,
       comments: comments.length,
       unknown: featureTracker.getUnknown(),
-      loose: !!ast.loose
+      loose: !!ast.loose,
+      missingDetectors: missingDetectors
     };
   } catch (error) {
     throw new Error(`Failed to analyze ${filePath}: ${error.message}`);
@@ -102,24 +104,59 @@ class FeatureTracker {
   }
 }
 
+
+function createWalkerMapProxy(detectors, missingDetectors = Object.create(null)) {
+  const walkerMap = Object.fromEntries(
+    detectors.map(({ nodeType, detector }) => [
+      nodeType,
+      // keep your wrapper that normalizes ancestors if you use it
+      withAncestors((node, ancestors) => detector(node, ancestors)),
+    ])
+  );
+
+  return new Proxy(walkerMap, {
+    get(target, prop, receiver) {
+      // acorn-walk will only ask for string node types, but be safe
+      if (typeof prop !== 'string') return Reflect.get(target, prop, receiver);
+
+      const handler = Reflect.get(target, prop, receiver);
+
+      if (typeof handler === 'function') {
+        // IMPORTANT: preserve all args that walk.ancestor passes:
+        // (node, stateOrAncestors, ancestors)
+        return function proxiedVisitor(node, stateOrAncestors, ancestors) {
+          return handler(node, stateOrAncestors, ancestors);
+        };
+      }
+
+      // Count a visit for a node type that has no detector
+      const rec = (missingDetectors[prop] ||= { visited: 0 });
+      rec.visited++;
+
+      // Return undefined so acorn-walk just continues using the base visitor
+      return undefined;
+    },
+  });
+}
+
 /**
  * Analyzes an AST to extract feature usage
  * @param {Object} ast - AST to analyze
  * @param {FeatureTracker} tracker - Feature tracker instance
+ * @param {Object} missingDetectors - Map of unhandled visitors
  */
-function analyzeAst(ast, tracker) {
+function analyzeAst(ast, tracker, missingDetectors = Object.create(null)) {
   const detectors = createFeatureDetectors(tracker);
-  const jsxBase = createJsxWalkBase();
-  
-  const walkerMap = Object.fromEntries(
-    detectors.map(({ nodeType, detector }) => [
-      nodeType,
-      withAncestors((node, ancestors) => detector(node, ancestors))
-    ])
-  );
+  const base = createExtendedWalkBase();
+  const walkerMap = createWalkerMapProxy(detectors, missingDetectors);
 
-  walk.ancestor(ast, walkerMap, jsxBase);
+  try {
+    walk.ancestor(ast, walkerMap, base);
+  } catch (error) {
+    console.error(`Error analyzing AST: ${error.message}`);
+  }
 }
+
 
 /**
  * Creates feature detection functions
@@ -395,6 +432,15 @@ function createFeatureDetectors(tracker) {
     tracker.increment('labels');
   });
 
+  // TypeScript specific
+  addDetector('TSAsExpression', (node) => {
+    tracker.increment('tsAsExpression');
+  });
+
+  addDetector('TSSatisfiesExpression', (node) => {
+    tracker.increment('tsSatisfiesExpression');
+  });
+
   return detectors;
 }
 
@@ -532,8 +578,38 @@ function createRepositorySummary(results, repositoryPath) {
     ),
     featuresTotal: MASTER_FEATURE_CATALOG.length,
     featuresObserved: 0,
+    missingDetectors: {},
+    totalMissingDetections: 0,
     generatedAt: new Date().toISOString()
   };
+
+  // TODO: move this to a utility function
+  // Unhandled visitors aggregation
+  const structural = new Set([
+    "Program","Identifier","Expression","Statement",
+    "BlockStatement","ExpressionStatement","Pattern","VariablePattern","MemberPattern",
+    "ForInit","Class","ClassBody","Property","ObjectExpression","ArrayExpression","ArrayPattern","TemplateElement"
+  ]);
+  
+  for (const result of results) {
+    if (result.missingDetectors) {
+
+      const realMissing = result.missingDetectors && Object.fromEntries(
+        Object.entries(result.missingDetectors).filter(([type]) => !structural.has(type))
+      );
+
+      if (!realMissing) continue;
+
+      for (const [detector, info] of Object.entries(realMissing)) {
+        if (!summary.missingDetectors[detector]) {
+          summary.missingDetectors[detector] = { visited: 0 };
+        }
+        summary.missingDetectors[detector].visited += info.visited;
+      }
+    }
+  }
+  summary.totalMissingDetections = Object.values(summary.missingDetectors)
+    .reduce((sum, v) => sum + v.visited, 0);
 
   // Initialize all features to 0
   for (const feature of MASTER_FEATURE_CATALOG) {
@@ -614,6 +690,13 @@ Options:
       console.log(`Features observed:      ${analysis.featuresObserved}`);
       console.log(`LOC total:             ${analysis.locTotal}`);
       console.log(`Total occurrences:     ${analysis.totalOccurrences}`);
+      console.log(`Total unhandled visits: ${analysis.totalMissingDetections}`);
+      if (analysis.totalMissingDetections > 0) {
+        console.log('Missing detectors:');
+        for (const [detector, info] of Object.entries(analysis.missingDetectors)) {
+          console.log(`  ${detector}: ${info.visited}`);
+        }
+      }
       
       console.log('\\n— Top features (non-zero) —');
       const topFeatures = Object.entries(analysis.totals)
