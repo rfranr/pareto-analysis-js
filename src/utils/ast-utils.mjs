@@ -138,12 +138,13 @@ function genericWalker_deprecated(node, st, c) {
 
 const genericWalker = (() => {
 
-  // TODO: track info about unhandled nodes
-  console.log("Warning: +++++++++++ Unhandled Node type: " + node.type);
-
 
   const isNode = (x) => x && typeof x.type === 'string';
   return function genericWalker(node, st, c) {
+    
+    // TODO: track info about unhandled nodes
+    console.log("Warning: +++++++++++ Unhandled Node type: " + node.type);
+
     // Iterative + without visiting properties that are not nodes
     for (const key of Object.keys(node)) {
       const child = node[key];
