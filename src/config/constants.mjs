@@ -20,7 +20,9 @@ export const ANALYSIS = {
     'bundles',
     '.git'
   ],
-  FILE_EXTENSIONS: /\.(m?jsx?)$/,  // JavaScript/JSX only - TypeScript not yet supported
+  // TODO: consider adding .tsx back when TSX support is implemented
+  //FILE_EXTENSIONS: /\.(m?jsx?)|(\.ts|\.tsx)$/,  // JavaScript/JSX and TypeScript
+  FILE_EXTENSIONS: /\.(m?jsx?)|(\.ts)$/,  // JavaScript/JSX and TypeScript
   IGNORE_FILES: /\.(min|bundle|legacy)\.m?js$/
 };
 

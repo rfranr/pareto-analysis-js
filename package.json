@@ -73,14 +73,15 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@sveltejs/acorn-typescript": "^1.0.6",
     "acorn": "^8.15.0",
-    "acorn-loose": "^8.3.0",
-    "acorn-jsx": "^5.3.2",
-    "acorn-walk": "^8.3.4",
     "acorn-import-assertions": "^1.9.0",
     "acorn-import-attributes": "^1.9.5",
-    "chartjs-node-canvas": "^5.0.0",
+    "acorn-jsx": "^5.3.2",
+    "acorn-loose": "^8.3.0",
+    "acorn-walk": "^8.3.4",
     "chart.js": "^4.5.0",
+    "chartjs-node-canvas": "^5.0.0",
     "csv-parse": "^5.5.6",
     "fs-extra": "^11.2.0",
     "yargs": "^17.7.2"
