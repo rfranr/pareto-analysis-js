@@ -53,9 +53,9 @@ analyze_repository() {
     fi
     
     log_info "Analyzing repository: ${repo_name}"
-    log_info "Running: node src/analyzer.mjs --repo \"${repo_path}\" --output \"${stats_file}\""
+    log_info "Running: node src/analyzer.js --repo \"${repo_path}\" --output \"${stats_file}\""
     
-    if node src/analyzer.mjs --repo "${repo_path}" --output "${stats_file}"; then
+    if node src/analyzer.js --repo "${repo_path}" --output "${stats_file}"; then
         log_success "Analysis complete: ${stats_file}"
         return 0
     else
@@ -128,7 +128,7 @@ generate_reports() {
     
     # Generate comprehensive report
     local report_file="${REPORTS_DIR}/pareto-analysis.md"
-    if node src/pareto-analyzer.mjs "${stats_files[@]}" --output "${report_file}"; then
+    if node src/pareto-analyzer.js "${stats_files[@]}" --output "${report_file}"; then
         log_success "Pareto analysis report: ${report_file}"
     else
         log_error "Failed to generate Pareto analysis report"
@@ -136,7 +136,7 @@ generate_reports() {
     
     # Generate JSON report for programmatic access
     local json_report="${REPORTS_DIR}/pareto-analysis.json"
-    if node src/pareto-analyzer.mjs "${stats_files[@]}" --json --output "${json_report}"; then
+    if node src/pareto-analyzer.js "${stats_files[@]}" --json --output "${json_report}"; then
         log_success "JSON analysis report: ${json_report}"
     else
         log_error "Failed to generate JSON analysis report"
@@ -158,7 +158,7 @@ generate_charts() {
         return 1
     fi
     
-    if node src/chart-generator.mjs "${stats_files[@]}" --output-dir "${CHARTS_DIR}"; then
+    if node src/chart-generator.js "${stats_files[@]}" --output-dir "${CHARTS_DIR}"; then
         log_success "Charts generated in: ${CHARTS_DIR}"
     else
         log_error "Failed to generate charts"

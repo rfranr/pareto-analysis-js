@@ -2,7 +2,7 @@
  * Command line interface utilities
  */
 
-import { CLI } from '../config/constants.mjs';
+import { CLI } from '../config/constants.js';
 
 /**
  * Parses command line arguments into a structured format

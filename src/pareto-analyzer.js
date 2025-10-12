@@ -4,8 +4,8 @@
  */
 
 import path from 'node:path';
-import { PARETO } from './config/constants.mjs';
-import { MASTER_FEATURE_CATALOG } from './config/features.mjs';
+import { PARETO } from './config/constants.js';
+import { MASTER_FEATURE_CATALOG } from './config/features.js';
 import {
   exitWithError,
   exitWithSuccess,
@@ -13,8 +13,8 @@ import {
   parseCommaSeparated,
   parseParetocuts,
   validateArguments
-} from './utils/cli-utils.mjs';
-import { loadJsonFile, writeFileContent } from './utils/file-utils.mjs';
+} from './utils/cli-utils.js';
+import { loadJsonFile, writeFileContent } from './utils/file-utils.js';
 
 /**
  * Pareto analysis result for a single metric
@@ -354,7 +354,7 @@ async function main() {
   const { inputFiles, flags } = parseArguments(process.argv.slice(2));
   
   const usageText = `
-Usage: node src/pareto-analyzer.mjs <stats-files...> [options]
+Usage: node src/pareto-analyzer.js <stats-files...> [options]
 
 Options:
   --metrics <list>    Comma-separated metrics to analyze (default: totals,presence,perKLOC)
@@ -364,9 +364,9 @@ Options:
   --json              Output JSON instead of Markdown
 
 Examples:
-  node src/pareto-analyzer.mjs stats/*.json
-  node src/pareto-analyzer.mjs stats/*.json --metrics totals --cuts 0.8,0.9
-  node src/pareto-analyzer.mjs stats/*.json --output report.md
+  node src/pareto-analyzer.js stats/*.json
+  node src/pareto-analyzer.js stats/*.json --metrics totals --cuts 0.8,0.9
+  node src/pareto-analyzer.js stats/*.json --output report.md
 `;
 
   if (!validateArguments({ inputFiles }, usageText)) {

@@ -6,20 +6,20 @@
 import * as walk from 'acorn-walk';
 import path from 'node:path';
 
-import { PARETO } from './config/constants.mjs';
-import { ARRAY_METHODS, MASTER_FEATURE_CATALOG } from './config/features.mjs';
+import { PARETO } from './config/constants.js';
+import { ARRAY_METHODS, MASTER_FEATURE_CATALOG } from './config/features.js';
 import {
   createExtendedWalkBase,
   isFunctionNode,
   parseFile,
   withAncestors
-} from './utils/ast-utils.mjs';
+} from './utils/ast-utils.js';
 import {
   exitWithError,
   exitWithSuccess,
   parseArguments
-} from './utils/cli-utils.mjs';
-import { readFileContent, saveJsonFile, walkDirectory } from './utils/file-utils.mjs';
+} from './utils/cli-utils.js';
+import { readFileContent, saveJsonFile, walkDirectory } from './utils/file-utils.js';
 
 /**
  * Analyzes a single JavaScript file
@@ -657,8 +657,8 @@ async function main() {
   const { inputFiles, flags } = parseArguments(process.argv.slice(2));
   
   const usageText = `
-Usage: node src/analyzer.mjs --repo <path> --output <file.json>
-       node src/analyzer.mjs --repo <path> [--json]
+Usage: node src/analyzer.js --repo <path> --output <file.json>
+       node src/analyzer.js --repo <path> [--json]
 
 Options:
   --repo <path>     Repository path to analyze (required)

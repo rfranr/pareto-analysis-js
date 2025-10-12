@@ -20,17 +20,17 @@ import { ChartJSNodeCanvas } from 'chartjs-node-canvas';
 import fse from 'fs-extra';
 import path from 'node:path';
 
-import { CHARTS, PARETO } from './config/constants.mjs';
-import { MASTER_FEATURE_CATALOG } from './config/features.mjs';
-import { ParetoAnalysis } from './pareto-analyzer.mjs';
+import { CHARTS, PARETO } from './config/constants.js';
+import { MASTER_FEATURE_CATALOG } from './config/features.js';
+import { ParetoAnalysis } from './pareto-analyzer.js';
 import {
   exitWithError,
   exitWithSuccess,
   parseArguments,
   parseParetocuts,
   validateArguments
-} from './utils/cli-utils.mjs';
-import { loadJsonFile, writeFileContent } from './utils/file-utils.mjs';
+} from './utils/cli-utils.js';
+import { loadJsonFile, writeFileContent } from './utils/file-utils.js';
 
 // Register Chart.js components
 Chart.register(
@@ -541,7 +541,7 @@ async function main() {
   const { inputFiles, flags } = parseArguments(process.argv.slice(2));
   
   const usageText = `
-Usage: node src/chart-generator.mjs <stats-files...> [options]
+Usage: node src/chart-generator.js <stats-files...> [options]
 
 Options:
   --output-dir <dir>   Output directory for charts (default: charts)
@@ -550,8 +550,8 @@ Options:
   --cuts <list>        Comma-separated Pareto cuts (default: 0.8,0.9,0.95)
 
 Examples:
-  node src/chart-generator.mjs stats/*.json
-  node src/chart-generator.mjs stats/*.json --output-dir ./charts --width 1600
+  node src/chart-generator.js stats/*.json
+  node src/chart-generator.js stats/*.json --output-dir ./charts --width 1600
 `;
 
   if (!validateArguments({ inputFiles }, usageText)) {

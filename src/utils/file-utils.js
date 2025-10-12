@@ -4,7 +4,7 @@
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { ANALYSIS } from '../config/constants.mjs';
+import { ANALYSIS } from '../config/constants.js';
 
 /**
  * Recursively walks through directory and yields JavaScript/TypeScript files

@@ -29,6 +29,7 @@ It’s not a formal measurement tool — just a personal experiment born out of 
 ### **Currently Supported**
 - **JavaScript (.js, .mjs)** - Full ES2024 + syntax (via Acorn)
 - **JSX (.jsx)** - Supported through acorn-jsx
+- **TypeScript (.ts, .tsx)** - Basic support (syntax only, no types) via acorn-typescript
 - **Module formats** - CommonJS and ES modules are both recognized
 
 ## Features
@@ -69,9 +70,9 @@ npm install
 ### Basic Usage
 
 ```bash
-node src/analyzer.mjs --repo ./repos/my-project --output analysis.json
-node src/pareto-analyzer.mjs stats/*.json --output report.md
-node src/chart-generator.mjs stats/*.json --output-dir charts/
+node src/analyzer.js --repo ./repos/my-project --output analysis.json
+node src/pareto-analyzer.js stats/*.json --output report.md
+node src/chart-generator.js stats/*.json --output-dir charts/
 ./analyze.sh full ./repos/my-project
 ```
 
@@ -114,12 +115,12 @@ Output:
 
 ```
 src/
-├── analyzer.mjs           # Code analysis engine
-├── pareto-analyzer.mjs    # Pareto statistics generator
-├── chart-generator.mjs    # Visualization builder
+├── analyzer.js           # Code analysis engine
+├── pareto-analyzer.js    # Pareto statistics generator
+├── chart-generator.js    # Visualization builder
 ├── config/
-│   ├── features.mjs       # JavaScript feature catalog
-│   └── constants.mjs      # Default settings
+│   ├── features.js       # JavaScript feature catalog
+│   └── constants.js      # Default settings
 └── utils/                 # File, AST, and CLI helpers
 
 scripts/
