@@ -11,8 +11,22 @@ const statsDir = path.resolve('../../docs/stats');
 // Function to get available chart files
 async function getChartFiles() {
   try {
-    const files = await readdir(chartsDir);
-    return files.filter(file => file.endsWith('.png')).sort();
+    // Read the charts directory and filter for PNG files
+    // files must be in subdirecotories like 'microsoft/typescript.png'
+    const subdirs = await readdir(chartsDir, { withFileTypes: true });
+    const chartFiles = [];
+
+    for (const subdir of subdirs) {
+      if (subdir.isDirectory()) {
+        const files = await readdir(path.join(chartsDir, subdir.name));
+        chartFiles.push(...files
+          .filter(file => file.endsWith('.png'))
+          .map(file => path.join(subdir.name, file))
+        );
+      }
+    }
+
+    return chartFiles.sort();
   } catch (error) {
     console.warn('Charts directory not found:', error.message);
     return [];
@@ -58,6 +72,18 @@ function formatChartName(filename: string): string {
     <h1>📊 JavaScript Pareto Analysis Dashboard</h1>
     <p>Visualizing JavaScript feature usage patterns following the 80/20 rule</p>
   </header>
+
+
+  <section class="actions-section">
+    <div class="actions-grid">
+      <button class="action-button" onclick="window.location.href='/report'">
+        View Full Report
+      </button>
+      <button class="action-button" onclick="window.location.reload()">
+        Refresh Charts
+      </button>
+    </div>
+  </section>
 
   {chartFiles.length === 0 ? (
     <div class="no-charts">
@@ -111,7 +137,7 @@ function formatChartName(filename: string): string {
       <!-- Individual Repository Analysis -->
       {overlayCharts.length > 0 && (
         <section class="chart-section">
-          <h2>🔍 Individual Repository Analysis</h2>
+          <h2>Individual Repository Analysis</h2>
           <p>Detailed analysis for each repository</p>
           <div class="chart-grid overlay-grid">
             {overlayCharts.map(chart => (
@@ -130,16 +156,13 @@ function formatChartName(filename: string): string {
 
       <!-- Quick Actions -->
       <section class="actions-section">
-        <h2>🚀 Quick Actions</h2>
+        <h2> Quick Actions</h2>
         <div class="actions-grid">
-          <button class="action-button" onclick="window.open('/reports/pareto-analysis.md')">
-            📄 View Full Report
+          <button class="action-button" onclick="window.location.href='/report'">
+            View Full Report
           </button>
           <button class="action-button" onclick="window.location.reload()">
-            🔄 Refresh Charts
-          </button>
-          <button class="action-button" onclick="downloadAllCharts()">
-            📥 Download All Charts
+            Refresh Charts
           </button>
         </div>
       </section>

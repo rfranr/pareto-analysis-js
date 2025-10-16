@@ -25,6 +25,9 @@ describe('analyzeFile', () => {
 
       function add(a, b) { return a + b; }
 
+      const vl = 42;
+      vl >>= 1;
+      vl >>= 1;
     `;
     
     readFileContent.mockResolvedValue(mockCode);
@@ -35,9 +38,10 @@ describe('analyzeFile', () => {
     expect(result).toHaveProperty('counts');
     expect(result).toHaveProperty('present');
     expect(result).toHaveProperty('loc');
-    expect(result.loc).toBe(5);
+    expect(result.loc).toBe(11);
     expect(result.present).toHaveProperty('arrayMethod_map', 1);
     expect(result.counts).toHaveProperty('arrayMethod_map', 1);
+    expect(result.counts).toHaveProperty('assignOp_>>=', 2);
   });
 
   test('should handle ES6 features', async () => {

@@ -1,0 +1,15 @@
+{
+  "batchAnalysis": {
+    "startedAt": "2025-10-16T10:51:30.875Z",
+    "completedAt": "2025-10-16T10:51:30.876Z",
+    "totalRepositories": 60,
+    "successfulClones": 60,
+    "successfulAnalyses": 60,
+    "failedRepositories": [
+  ""
+],
+    "outputDirectory": "./analysis-results",
+    "cloneDepth": "--depth=1",
+    "repositoriesKept": false
+  }
+}

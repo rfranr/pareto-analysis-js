@@ -573,9 +573,13 @@ function countLines(code) {
 /**
  * Analyzes an entire repository
  * @param {string} repositoryPath - Path to repository
+ * @param {Object} options - Analysis options
+ * @param {string} options.repositoryName - Name of the repository
  * @returns {Promise<Object>} Analysis summary
  */
-async function analyzeRepository(repositoryPath) {
+async function analyzeRepository(repositoryPath, options = {
+  repositoryName: null
+}) {
   const results = [];
   const resolvedPath = path.resolve(process.cwd(), repositoryPath);
 
@@ -584,26 +588,33 @@ async function analyzeRepository(repositoryPath) {
   for await (const filePath of walkDirectory(resolvedPath)) {
     try {
       const result = await analyzeFile(filePath);
+
       results.push(result);
     } catch (error) {
       console.warn(`Warning: Could not analyze: ${filePath} (${error.message})`);
     }
   }
 
-  return createRepositorySummary(results, resolvedPath);
+  return createRepositorySummary(results, resolvedPath, options);
 }
 
 /**
  * Creates a summary of repository analysis results
  * @param {Array} results - Individual file results
  * @param {string} repositoryPath - Repository path
+ * @param {Object} options - Summary options
+ * @param {string} options.repositoryName - Optional repository name
  * @returns {Object} Repository summary
  */
-function createRepositorySummary(results, repositoryPath) {
+function createRepositorySummary(results, repositoryPath, options = {
+  repositoryName: null
+}) {
   const relativeRepoPath = path.relative(process.cwd(), repositoryPath);
 
+  const repoName = options.repositoryName || path.basename(repositoryPath);
+
   const summary = {
-    repo: path.basename(repositoryPath),
+    repo: repoName,
     rootDir: relativeRepoPath,
     filesAnalyzed: results.length,
     totals: {},
@@ -695,11 +706,12 @@ async function main() {
   const { inputFiles, flags } = parseArguments(process.argv.slice(2));
   
   const usageText = `
-Usage: node src/analyzer.js --repo <path> --output <file.json>
+Usage: node src/analyzer.js --repo <path> --repository-name <name> --output <file.json>
        node src/analyzer.js --repo <path> [--json]
 
 Options:
   --repo <path>     Repository path to analyze (required)
+  --repository-name <name>  Optional repository name to include in results
   --output <file>   Output JSON file path
   --json           Output JSON to stdout
 `;
@@ -709,7 +721,9 @@ Options:
   }
 
   try {
-    const analysis = await analyzeRepository(flags.repo);
+    const analysis = await analyzeRepository(flags.repo, {
+      repositoryName: flags['repository-name'] || null
+    });
     
     if (flags.output || flags.json) {
       const json = JSON.stringify(analysis, null, 2);
