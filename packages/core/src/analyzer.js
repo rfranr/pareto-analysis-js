@@ -441,6 +441,19 @@ function createFeatureDetectors(tracker) {
     tracker.increment('tsSatisfiesExpression');
   });
 
+////////
+  // const noOps = [
+  //   'TSTypeAnnotation','TSTypeReference','TSQualifiedName','TSUnionType','TSIntersectionType',
+  //   'TSTypeLiteral','TSInterfaceDeclaration','TSTypeAliasDeclaration','TSEnumDeclaration',
+  //   'TSEnumMember','TSModuleDeclaration','TSModuleBlock','TSImportType','TSIndexedAccessType',
+  //   'TSArrayType','TSTupleType','TSLiteralType','TSMappedType','TSConditionalType','TSInferType',
+  //   'TSThisType','TSParenthesizedType','TSTypeParameter','TSTypeParameterDeclaration',
+  //   'TSTypeParameterInstantiation','TSDeclareFunction','TSDeclareMethod',
+  //   'TSImportEqualsDeclaration','TSExportAssignment','TSNamespaceExportDeclaration',
+  //   'TSIndexSignature'
+  // ];
+////
+
   return detectors;
 }
 

@@ -20,7 +20,7 @@ import { ChartJSNodeCanvas } from 'chartjs-node-canvas';
 import fse from 'fs-extra';
 import path from 'node:path';
 
-import { ParetoAnalysis } from '../pareto-analyzer.js';
+import { ParetoAnalysis } from './pareto-analyzer.js';
 import { CHARTS, PARETO } from './config/constants.js';
 import { MASTER_FEATURE_CATALOG } from './config/features.js';
 import {

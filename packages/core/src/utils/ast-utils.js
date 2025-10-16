@@ -112,7 +112,7 @@ function parseJavaScript(code, { filename, asModule = null, comments = [] } = {}
       // Fall back to loose parsing
       const ast = AcornLoose.parse(code, parseOptions);
       ast.loose = true;
-      ast._strictErrors = [strictError, scriptError];
+      ast._errors = { strict: strictError, script: scriptError };
       ast.sourceType = sourceType;
       return ast;
     }

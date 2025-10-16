@@ -10,7 +10,9 @@
     "charts": "node src/chart-generator.js",
     "pipeline": "./analyze.sh",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "clean": "rm -rf charts/ stats/ reports/ *.json *.md *.csv *.png",
     "clean-all": "npm run clean && rm -rf node_modules/ package-lock.json",
     "demo": "npm run analyze -- --repo ./repos/core-js --output demo-stats.json && npm run pareto -- demo-stats.json --output demo-report.md",
@@ -76,7 +78,9 @@
     "@types/node": "^20.0.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.0",
+    "@vitest/coverage-v8": "^2.1.0"
   },
   "dependencies": {
     "@sveltejs/acorn-typescript": "^1.0.6",
