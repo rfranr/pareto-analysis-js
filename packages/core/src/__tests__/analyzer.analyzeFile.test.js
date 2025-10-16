@@ -22,6 +22,9 @@ describe('analyzeFile', () => {
       const arr = [1, 2, 3];
       arr.map(x => x * 2);
       console.log('Hello');
+
+      function add(a, b) { return a + b; }
+
     `;
     
     readFileContent.mockResolvedValue(mockCode);
@@ -33,8 +36,8 @@ describe('analyzeFile', () => {
     expect(result).toHaveProperty('present');
     expect(result).toHaveProperty('loc');
     expect(result.loc).toBe(5);
-    expect(result.counts).toHaveProperty('arrayMethod_map');
     expect(result.present).toHaveProperty('arrayMethod_map', 1);
+    expect(result.counts).toHaveProperty('arrayMethod_map', 1);
   });
 
   test('should handle ES6 features', async () => {
@@ -142,8 +145,9 @@ describe('analyzeFile', () => {
     
     const result = await analyzeFile('invalid.js');
 
-    expect(result).toHaveProperty('error');
-    expect(result.error).toContain('Parse error');
+    expect(result).toHaveProperty('errors');
+    expect(result.errors.script.message).toMatch('Unexpected token');
+    expect(result.errors.strict.message).toMatch('Unexpected token');
   });
 
   test('should count lines correctly', async () => {

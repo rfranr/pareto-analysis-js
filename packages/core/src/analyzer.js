@@ -12,7 +12,8 @@ import {
   createExtendedWalkBase,
   isFunctionNode,
   parseFile,
-  withAncestors
+  withAncestors,
+  mapParserNodeToFeature
 } from './utils/ast-utils.js';
 import {
   exitWithError,
@@ -33,6 +34,8 @@ async function analyzeFile(filePath) {
   const missingDetectors = {};
   
   try {
+    console.info(`Info: Analyzing file: ${filePath}`);
+
     const ast = parseFile(code, { filename: filePath, comments });
     analyzeAst(ast, featureTracker, missingDetectors);
 
@@ -46,7 +49,8 @@ async function analyzeFile(filePath) {
       comments: comments.length,
       unknown: featureTracker.getUnknown(),
       loose: !!ast.loose,
-      missingDetectors: missingDetectors
+      missingDetectors: missingDetectors,
+      errors: ast._errors || []
     };
   } catch (error) {
     throw new Error(`Failed to analyze ${filePath}: ${error.message}`);
@@ -105,7 +109,7 @@ class FeatureTracker {
 }
 
 
-function createWalkerMapProxy(detectors, missingDetectors = Object.create(null)) {
+function createWalkerMapProxy(detectors, missingDetectors = Object.create(null), tracker) {
   const walkerMap = Object.fromEntries(
     detectors.map(({ nodeType, detector }) => [
       nodeType,
@@ -127,14 +131,25 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null))
         return function proxiedVisitor(node, stateOrAncestors, ancestors) {
           return handler(node, stateOrAncestors, ancestors);
         };
+      } else {
+        console.warn(`Warning: No visitor function defined for node type: ${prop}`);
       }
 
       // Count a visit for a node type that has no detector
       const rec = (missingDetectors[prop] ||= { visited: 0 });
       rec.visited++;
 
-      // Return undefined so acorn-walk just continues using the base visitor
-      return undefined;
+      // Add a generic visitor for unhandled node types
+      // must call features handler function 
+      // FeatureTracker 
+
+      const genericVisitor = (node, stateOrAncestors, ancestors) => {
+        console.warn(`Warning: No specific visitor for node type: ${prop}`);
+        tracker.increment(`unhandled_${prop}`);
+      };
+
+      return genericVisitor;
+
     },
   });
 }
@@ -148,12 +163,13 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null))
 function analyzeAst(ast, tracker, missingDetectors = Object.create(null)) {
   const detectors = createFeatureDetectors(tracker);
   const base = createExtendedWalkBase();
-  const walkerMap = createWalkerMapProxy(detectors, missingDetectors);
+  const walkerMap = createWalkerMapProxy(detectors, missingDetectors, tracker);
 
   try {
     walk.ancestor(ast, walkerMap, base);
   } catch (error) {
     console.error(`Error analyzing AST: ${error.message}`);
+    throw new Error(`Error analyzing AST: ${error.message}`);
   }
 }
 
@@ -165,9 +181,9 @@ function analyzeAst(ast, tracker, missingDetectors = Object.create(null)) {
  */
 function createFeatureDetectors(tracker) {
   const detectors = [];
-  
-  const addDetector = (nodeType, detectorFn) => {
-    detectors.push({ nodeType, detector: detectorFn });
+
+  const addDetector = (nodeType, detector) => {
+    detectors.push({ nodeType, detector });
   };
 
   // Function declarations and expressions
@@ -406,15 +422,24 @@ function createFeatureDetectors(tracker) {
 
   // Operators
   addDetector('BinaryExpression', (node) => {
-    tracker.increment(`binaryOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   addDetector('AssignmentExpression', (node) => {
-    tracker.increment(`assignOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   addDetector('UpdateExpression', (node) => {
-    tracker.increment(`updateOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   // Literals and special nodes
