@@ -20,6 +20,7 @@ dist/
 
 # Repository clones (keep structure but ignore content)
 repos/*/
+repos_test/*/
 
 # IDE and editor files
 .vscode/
