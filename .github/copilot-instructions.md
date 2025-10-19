@@ -8,6 +8,7 @@ Use these repository-specific guidelines to be productive immediately when gener
 
 ## General guidelines
 - Ignore everything under the pattern `docs/*.json`.
+- Ignore everything under the pattern `stats/*.json`.
 
 
 ## Big picture architecture
