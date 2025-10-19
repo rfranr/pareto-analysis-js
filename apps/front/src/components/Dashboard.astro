@@ -67,9 +67,6 @@ function formatChartName(filename: string): string {
 }
 
 ---
-  <h1>{base}</h1>
-  <h1>{site}</h1>
-
 <div class="dashboard">
   <header class="dashboard-header">
     <h1>📊 JavaScript Pareto Analysis Dashboard</h1>
@@ -79,7 +76,7 @@ function formatChartName(filename: string): string {
 
   <section class="actions-section">
     <div class="actions-grid">
-      <button class="action-button" onclick="window.location.href='/report'">
+      <button class="action-button" onclick="window.location.href='${base}/report'">
         View Full Report
       </button>
       <button class="action-button" onclick="window.location.reload()">
@@ -161,7 +158,7 @@ function formatChartName(filename: string): string {
       <section class="actions-section">
         <h2> Quick Actions</h2>
         <div class="actions-grid">
-          <button class="action-button" onclick="window.location.href='/report'">
+          <button class="action-button" onclick="window.location.href='${base}/report'">
             View Full Report
           </button>
           <button class="action-button" onclick="window.location.reload()">
