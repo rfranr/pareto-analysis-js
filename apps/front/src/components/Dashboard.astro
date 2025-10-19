@@ -1,7 +1,7 @@
 ---
-// Dashboard.astro - Main dashboard component for Pareto Analysis charts
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
+const { site, base = '' } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL || '' } : { site: '', base: '' };
 
 // Paths to chart directories (adjust based on your setup)
 const chartsDir = path.resolve('../../docs/charts');
@@ -104,7 +104,7 @@ function formatChartName(filename: string): string {
               <div class="chart-card">
                 <h3>{formatChartName(chart)}</h3>
                 <img 
-                  src={`/charts/${chart}`} 
+                  src={`${base}charts/${chart}`} 
                   alt={`Aggregate ${formatChartName(chart)} Analysis`}
                   loading="lazy"
                 />
@@ -124,7 +124,7 @@ function formatChartName(filename: string): string {
               <div class="chart-card">
                 <h3>{formatChartName(chart)} Comparison</h3>
                 <img 
-                  src={`/charts/${chart}`} 
+                  src={`${base}charts/${chart}`} 
                   alt={`${formatChartName(chart)} Repository Comparison`}
                   loading="lazy"
                 />
@@ -144,7 +144,7 @@ function formatChartName(filename: string): string {
               <div class="chart-card">
                 <h3>{formatChartName(chart)}</h3>
                 <img 
-                  src={`/charts/${chart}`} 
+                  src={`${base}charts/${chart}`} 
                   alt={`${formatChartName(chart)} Overlay Analysis`}
                   loading="lazy"
                 />
