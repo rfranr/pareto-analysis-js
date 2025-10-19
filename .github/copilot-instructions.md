@@ -1,5 +1,5 @@
 ---
-applyTo: "**/*.js,**/*.sh,**/*.astro"
+applyTo: "**/*.{js,sh,astro},!docs/**"
 
 ---
 # Copilot instructions for pareto-analysis-js
