@@ -1,0 +1,26 @@
+# Example repository list for analyze-repos.sh
+# Format: owner/repo-name or full GitHub URLs
+# Lines starting with # are comments and will be ignored
+
+# Popular JavaScript libraries
+facebook/react
+microsoft/vscode
+nodejs/node
+vercel/next.js
+webpack/webpack
+
+# Can also use full URLs
+https://github.com/expressjs/express
+https://github.com/lodash/lodash
+
+# TypeScript repositories
+microsoft/TypeScript
+type-challenges/type-challenges
+
+# Vue.js ecosystem
+vuejs/vue
+vuejs/core
+
+# Testing frameworks
+jestjs/jest
+vitest-dev/vitest

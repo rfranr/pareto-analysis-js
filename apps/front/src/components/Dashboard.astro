@@ -1,0 +1,345 @@
+---
+// Dashboard.astro - Main dashboard component for Pareto Analysis charts
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
+
+// Paths to chart directories (adjust based on your setup)
+const chartsDir = path.resolve('../../docs/charts');
+const reportsDir = path.resolve('../../docs/reports');
+const statsDir = path.resolve('../../docs/stats');
+
+// Function to get available chart files
+async function getChartFiles() {
+  try {
+    // Read the charts directory and filter for PNG files
+    // files must be in subdirecotories like 'microsoft/typescript.png'
+    const subdirs = await readdir(chartsDir, { withFileTypes: true });
+    const chartFiles = [];
+
+    for (const subdir of subdirs) {
+      if (subdir.isDirectory()) {
+        const files = await readdir(path.join(chartsDir, subdir.name));
+        chartFiles.push(...files
+          .filter(file => file.endsWith('.png'))
+          .map(file => path.join(subdir.name, file))
+        );
+      }
+    }
+
+    return chartFiles.sort();
+  } catch (error) {
+    console.warn('Charts directory not found:', error.message);
+    return [];
+  }
+}
+
+async function getStatsFiles() {
+  try {
+    const files = await readdir(statsDir);
+    return files.filter(file => file.endsWith('.json')).sort();
+  } catch (error) {
+    console.warn('Stats directory not found:', error.message);
+    return [];
+  }
+}
+
+// Get chart files
+const chartFiles = await getChartFiles();
+
+// Get stats files
+const statsFiles = await getStatsFiles();
+
+// Organize charts by type
+const overlayCharts = chartFiles.filter(file => file.includes('-overlay.png'));
+const comparisonCharts = chartFiles.filter(file => file.includes('comparison-'));
+const aggregateCharts = chartFiles.filter(file => file.includes('aggregate-'));
+
+// Function to format chart names for display
+function formatChartName(filename: string): string {
+  return filename
+    .replace('.png', '')
+    .replace('-overlay', '')
+    .replace('comparison-', '')
+    .replace('aggregate-', '')
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+---
+
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>📊 JavaScript Pareto Analysis Dashboard</h1>
+    <p>Visualizing JavaScript feature usage patterns following the 80/20 rule</p>
+  </header>
+
+
+  <section class="actions-section">
+    <div class="actions-grid">
+      <button class="action-button" onclick="window.location.href='/report'">
+        View Full Report
+      </button>
+      <button class="action-button" onclick="window.location.reload()">
+        Refresh Charts
+      </button>
+    </div>
+  </section>
+
+  {chartFiles.length === 0 ? (
+    <div class="no-charts">
+      <h2>🔍 No Charts Available</h2>
+      <p>Run the analysis first to generate charts:</p>
+      <code>cd packages/core && ./analyze.sh full</code>
+    </div>
+  ) : (
+    <div class="charts-container">
+      
+      <!-- Aggregate Analysis Section -->
+      {aggregateCharts.length > 0 && (
+        <section class="chart-section">
+          <h2>🌍 Aggregate Analysis</h2>
+          <p>Combined analysis across all repositories</p>
+          <div class="chart-grid">
+            {aggregateCharts.map(chart => (
+              <div class="chart-card">
+                <h3>{formatChartName(chart)}</h3>
+                <img 
+                  src={`/charts/${chart}`} 
+                  alt={`Aggregate ${formatChartName(chart)} Analysis`}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Repository Comparisons -->
+      {comparisonCharts.length > 0 && (
+        <section class="chart-section">
+          <h2>📈 Repository Comparisons</h2>
+          <p>Side-by-side comparison of different repositories</p>
+          <div class="chart-grid">
+            {comparisonCharts.map(chart => (
+              <div class="chart-card">
+                <h3>{formatChartName(chart)} Comparison</h3>
+                <img 
+                  src={`/charts/${chart}`} 
+                  alt={`${formatChartName(chart)} Repository Comparison`}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Individual Repository Analysis -->
+      {overlayCharts.length > 0 && (
+        <section class="chart-section">
+          <h2>Individual Repository Analysis</h2>
+          <p>Detailed analysis for each repository</p>
+          <div class="chart-grid overlay-grid">
+            {overlayCharts.map(chart => (
+              <div class="chart-card">
+                <h3>{formatChartName(chart)}</h3>
+                <img 
+                  src={`/charts/${chart}`} 
+                  alt={`${formatChartName(chart)} Overlay Analysis`}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Quick Actions -->
+      <section class="actions-section">
+        <h2> Quick Actions</h2>
+        <div class="actions-grid">
+          <button class="action-button" onclick="window.location.href='/report'">
+            View Full Report
+          </button>
+          <button class="action-button" onclick="window.location.reload()">
+            Refresh Charts
+          </button>
+        </div>
+      </section>
+    </div>
+  )}
+</div>
+
+<style>
+  .dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+
+  .dashboard-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .dashboard-header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  .no-charts {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #dee2e6;
+  }
+
+  .no-charts h2 {
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+
+  .no-charts code {
+    background: #e9ecef;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  .charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .chart-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+  }
+
+  .chart-section h2 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+  }
+
+  .chart-section p {
+    margin: 0 0 2rem 0;
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+  }
+
+  .overlay-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .chart-card {
+    background: #fafbfc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e1e5e9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .chart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .chart-card h3 {
+    margin: 0 0 1rem 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .chart-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+  }
+
+  .actions-section {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .action-button {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .action-button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .dashboard {
+      padding: 1rem;
+    }
+    
+    .chart-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .dashboard-header h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+  function downloadAllCharts() {
+    // Create a simple download function for all charts
+    const chartImages = document.querySelectorAll('.chart-card img');
+    chartImages.forEach((img, index) => {
+      const link = document.createElement('a');
+      link.href = img.src;
+      link.download = `chart-${index + 1}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+</script>

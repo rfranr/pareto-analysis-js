@@ -1,0 +1,110 @@
+{
+  "name": "@rfranr/pareto-rule-core",
+  "version": "2.0.0",
+  "description": "JavaScript Pareto Rule Analysis Tool - Analyze and visualize JavaScript feature usage following the 80/20 principle",
+  "main": "src/analyzer.js",
+  "type": "module",
+  "scripts": {
+    "analyze": "node src/analyzer.js",
+    "pareto": "node src/pareto-analyzer.js",
+    "charts": "node src/chart-generator.js",
+    "pipeline": "./analyze.sh",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf charts/ stats/ reports/ *.json *.md *.csv *.png",
+    "clean-all": "npm run clean && rm -rf node_modules/ package-lock.json",
+    "demo": "npm run analyze -- --repo ./repos/core-js --output demo-stats.json && npm run pareto -- demo-stats.json --output demo-report.md",
+    "full-demo": "./analyze.sh full ./repos/core-js",
+    "lint": "echo \"Linting not configured yet\"",
+    "format": "echo \"Formatting not configured yet\"",
+    "dev": "node --watch src/analyzer.js",
+    "start": "npm run analyze"
+  },
+  "exports": {
+    "./analyzer": "./src/analyzer.js",
+    "./pareto-analyzer": "./src/pareto-analyzer.js",
+    "./chart-generator": "./src/chart-generator.js",
+    "./adapters/node/file-utils": "./src/adapters/node/file-utils.node.js"
+  },
+  "bin": {
+    "js-pareto": "./src/analyzer.js",
+    "pareto-analyze": "./analyze.sh"
+  },
+  "files": [
+    "src/",
+    "analyze.sh",
+    "README.md",
+    "MIGRATION.md",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "javascript",
+    "jsx",
+    "analysis",
+    "pareto",
+    "ast",
+    "code-quality",
+    "metrics",
+    "visualization",
+    "static-analysis",
+    "code-complexity",
+    "feature-detection",
+    "acorn",
+    "charts",
+    "reporting"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://github.com/rfranr"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfranr/mcp-pareto-rule.git",
+    "directory": "js"
+  },
+  "bugs": {
+    "url": "https://github.com/rfranr/mcp-pareto-rule/issues"
+  },
+  "homepage": "https://github.com/rfranr/mcp-pareto-rule/tree/main/js#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.0",
+    "@vitest/coverage-v8": "^2.1.0"
+  },
+  "dependencies": {
+    "@sveltejs/acorn-typescript": "^1.0.6",
+    "acorn": "^8.15.0",
+    "acorn-import-assertions": "^1.9.0",
+    "acorn-import-attributes": "^1.9.5",
+    "acorn-jsx": "^5.3.2",
+    "acorn-loose": "^8.3.0",
+    "acorn-walk": "^8.3.4",
+    "chart.js": "^4.5.0",
+    "chartjs-node-canvas": "^5.0.0",
+    "csv-parse": "^5.5.6",
+    "fs-extra": "^11.2.0",
+    "yargs": "^17.7.2"
+  },
+  "peerDependencies": {
+    "canvas": "^2.11.0"
+  },
+  "peerDependenciesMeta": {
+    "canvas": {
+      "optional": true
+    }
+  },
+  "optionalDependencies": {
+    "canvas": "^2.11.0"
+  }
+}

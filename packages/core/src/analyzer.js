@@ -11,6 +11,7 @@ import { ARRAY_METHODS, MASTER_FEATURE_CATALOG } from './config/features.js';
 import {
   createExtendedWalkBase,
   isFunctionNode,
+  mapParserNodeToFeature,
   parseFile,
   withAncestors
 } from './utils/ast-utils.js';
@@ -33,6 +34,8 @@ async function analyzeFile(filePath) {
   const missingDetectors = {};
   
   try {
+    console.info(`Info: Analyzing file: ${filePath}`);
+
     const ast = parseFile(code, { filename: filePath, comments });
     analyzeAst(ast, featureTracker, missingDetectors);
 
@@ -46,7 +49,8 @@ async function analyzeFile(filePath) {
       comments: comments.length,
       unknown: featureTracker.getUnknown(),
       loose: !!ast.loose,
-      missingDetectors: missingDetectors
+      missingDetectors: missingDetectors,
+      errors: ast._errors || []
     };
   } catch (error) {
     throw new Error(`Failed to analyze ${filePath}: ${error.message}`);
@@ -105,7 +109,7 @@ class FeatureTracker {
 }
 
 
-function createWalkerMapProxy(detectors, missingDetectors = Object.create(null)) {
+function createWalkerMapProxy(detectors, missingDetectors = Object.create(null), tracker) {
   const walkerMap = Object.fromEntries(
     detectors.map(({ nodeType, detector }) => [
       nodeType,
@@ -127,14 +131,24 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null))
         return function proxiedVisitor(node, stateOrAncestors, ancestors) {
           return handler(node, stateOrAncestors, ancestors);
         };
+      } else {
+        console.warn(`Warning: No visitor function defined for node type: ${prop}`);
       }
 
       // Count a visit for a node type that has no detector
       const rec = (missingDetectors[prop] ||= { visited: 0 });
       rec.visited++;
 
-      // Return undefined so acorn-walk just continues using the base visitor
-      return undefined;
+      // TODO: implement no-op tracking
+      // FeatureTracker 
+
+      const genericVisitor = (node, stateOrAncestors, ancestors) => {
+        console.warn(`Warning: No specific visitor for node type: ${prop}`);
+        tracker.increment(`unhandled_${prop}`);
+      };
+
+      return genericVisitor;
+
     },
   });
 }
@@ -148,12 +162,13 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null))
 function analyzeAst(ast, tracker, missingDetectors = Object.create(null)) {
   const detectors = createFeatureDetectors(tracker);
   const base = createExtendedWalkBase();
-  const walkerMap = createWalkerMapProxy(detectors, missingDetectors);
+  const walkerMap = createWalkerMapProxy(detectors, missingDetectors, tracker);
 
   try {
     walk.ancestor(ast, walkerMap, base);
   } catch (error) {
     console.error(`Error analyzing AST: ${error.message}`);
+    throw new Error(`Error analyzing AST: ${error.message}`);
   }
 }
 
@@ -165,9 +180,9 @@ function analyzeAst(ast, tracker, missingDetectors = Object.create(null)) {
  */
 function createFeatureDetectors(tracker) {
   const detectors = [];
-  
-  const addDetector = (nodeType, detectorFn) => {
-    detectors.push({ nodeType, detector: detectorFn });
+
+  const addDetector = (nodeType, detector) => {
+    detectors.push({ nodeType, detector });
   };
 
   // Function declarations and expressions
@@ -406,15 +421,24 @@ function createFeatureDetectors(tracker) {
 
   // Operators
   addDetector('BinaryExpression', (node) => {
-    tracker.increment(`binaryOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   addDetector('AssignmentExpression', (node) => {
-    tracker.increment(`assignOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   addDetector('UpdateExpression', (node) => {
-    tracker.increment(`updateOp_${node.operator}`);
+    const feature = mapParserNodeToFeature(node);
+    if (feature) {
+      tracker.increment(feature);
+    }
   });
 
   // Literals and special nodes
@@ -440,6 +464,20 @@ function createFeatureDetectors(tracker) {
   addDetector('TSSatisfiesExpression', (node) => {
     tracker.increment('tsSatisfiesExpression');
   });
+
+////////
+// TODO: implement no-op tracking
+  // const noOps = [
+  //   'TSTypeAnnotation','TSTypeReference','TSQualifiedName','TSUnionType','TSIntersectionType',
+  //   'TSTypeLiteral','TSInterfaceDeclaration','TSTypeAliasDeclaration','TSEnumDeclaration',
+  //   'TSEnumMember','TSModuleDeclaration','TSModuleBlock','TSImportType','TSIndexedAccessType',
+  //   'TSArrayType','TSTupleType','TSLiteralType','TSMappedType','TSConditionalType','TSInferType',
+  //   'TSThisType','TSParenthesizedType','TSTypeParameter','TSTypeParameterDeclaration',
+  //   'TSTypeParameterInstantiation','TSDeclareFunction','TSDeclareMethod',
+  //   'TSImportEqualsDeclaration','TSExportAssignment','TSNamespaceExportDeclaration',
+  //   'TSIndexSignature'
+  // ];
+////
 
   return detectors;
 }
@@ -535,9 +573,13 @@ function countLines(code) {
 /**
  * Analyzes an entire repository
  * @param {string} repositoryPath - Path to repository
+ * @param {Object} options - Analysis options
+ * @param {string} options.repositoryName - Name of the repository
  * @returns {Promise<Object>} Analysis summary
  */
-async function analyzeRepository(repositoryPath) {
+async function analyzeRepository(repositoryPath, options = {
+  repositoryName: null
+}) {
   const results = [];
   const resolvedPath = path.resolve(process.cwd(), repositoryPath);
 
@@ -546,26 +588,33 @@ async function analyzeRepository(repositoryPath) {
   for await (const filePath of walkDirectory(resolvedPath)) {
     try {
       const result = await analyzeFile(filePath);
+
       results.push(result);
     } catch (error) {
       console.warn(`Warning: Could not analyze: ${filePath} (${error.message})`);
     }
   }
 
-  return createRepositorySummary(results, resolvedPath);
+  return createRepositorySummary(results, resolvedPath, options);
 }
 
 /**
  * Creates a summary of repository analysis results
  * @param {Array} results - Individual file results
  * @param {string} repositoryPath - Repository path
+ * @param {Object} options - Summary options
+ * @param {string} options.repositoryName - Optional repository name
  * @returns {Object} Repository summary
  */
-function createRepositorySummary(results, repositoryPath) {
+function createRepositorySummary(results, repositoryPath, options = {
+  repositoryName: null
+}) {
   const relativeRepoPath = path.relative(process.cwd(), repositoryPath);
 
+  const repoName = options.repositoryName || path.basename(repositoryPath);
+
   const summary = {
-    repo: path.basename(repositoryPath),
+    repo: repoName,
     rootDir: relativeRepoPath,
     filesAnalyzed: results.length,
     totals: {},
@@ -657,11 +706,12 @@ async function main() {
   const { inputFiles, flags } = parseArguments(process.argv.slice(2));
   
   const usageText = `
-Usage: node src/analyzer.js --repo <path> --output <file.json>
+Usage: node src/analyzer.js --repo <path> --repository-name <name> --output <file.json>
        node src/analyzer.js --repo <path> [--json]
 
 Options:
   --repo <path>     Repository path to analyze (required)
+  --repository-name <name>  Optional repository name to include in results
   --output <file>   Output JSON file path
   --json           Output JSON to stdout
 `;
@@ -671,7 +721,9 @@ Options:
   }
 
   try {
-    const analysis = await analyzeRepository(flags.repo);
+    const analysis = await analyzeRepository(flags.repo, {
+      repositoryName: flags['repository-name'] || null
+    });
     
     if (flags.output || flags.json) {
       const json = JSON.stringify(analysis, null, 2);

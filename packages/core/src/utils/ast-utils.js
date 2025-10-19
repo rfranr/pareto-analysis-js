@@ -112,7 +112,7 @@ function parseJavaScript(code, { filename, asModule = null, comments = [] } = {}
       // Fall back to loose parsing
       const ast = AcornLoose.parse(code, parseOptions);
       ast.loose = true;
-      ast._strictErrors = [strictError, scriptError];
+      ast._errors = { strict: strictError, script: scriptError };
       ast.sourceType = sourceType;
       return ast;
     }
@@ -339,4 +339,29 @@ export function isFunctionNode(nodeType) {
     'FunctionExpression', 
     'ArrowFunctionExpression'
   ].includes(nodeType);
+}
+
+// Mapping table for parser nodes to features
+const featureMap = {
+  TryStatement: 'try',
+  CatchClause: 'catch',
+  UpdateExpression: (node) => `updateOp_${node.operator}`,
+  BinaryExpression: (node) => `binaryOp_${node.operator}`,
+  AssignmentExpression: (node) => `assignOp_${node.operator}`,
+  // Add more mappings as needed...
+};
+
+/**
+ * Maps a parser node to a feature name
+ * @param {Object} node - AST node
+ * @returns {string|null} Feature name or null if no mapping exists
+ */
+export function mapParserNodeToFeature(node) {
+  const mapper = featureMap[node.type];
+  if (typeof mapper === 'string') {
+    return mapper; // Direct mapping
+  } else if (typeof mapper === 'function') {
+    return mapper(node); // Context-dependent mapping
+  }
+  return null; // No mapping found
 }

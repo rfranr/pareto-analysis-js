@@ -1,0 +1,17 @@
+{
+  "name": "front",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@rfranr/pareto-rule-core": "*",
+    "astro": "^5.14.4",
+    "marked": "^16.4.0",
+    "github-markdown-css": "^5.8.1"
+  }
+}

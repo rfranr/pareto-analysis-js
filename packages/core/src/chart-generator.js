@@ -4,31 +4,31 @@
  */
 
 import {
-  BarController,
-  BarElement,
-  CategoryScale,
-  Chart,
-  Legend,
-  LinearScale,
-  LineController,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
+    BarController,
+    BarElement,
+    CategoryScale,
+    Chart,
+    Legend,
+    LinearScale,
+    LineController,
+    LineElement,
+    PointElement,
+    Title,
+    Tooltip,
 } from 'chart.js';
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas';
 import fse from 'fs-extra';
 import path from 'node:path';
 
+import { ParetoAnalysis } from './pareto-analyzer.js';
 import { CHARTS, PARETO } from './config/constants.js';
 import { MASTER_FEATURE_CATALOG } from './config/features.js';
-import { ParetoAnalysis } from './pareto-analyzer.js';
 import {
-  exitWithError,
-  exitWithSuccess,
-  parseArguments,
-  parseParetocuts,
-  validateArguments
+    exitWithError,
+    exitWithSuccess,
+    parseArguments,
+    parseParetocuts,
+    validateArguments
 } from './utils/cli-utils.js';
 import { loadJsonFile, writeFileContent } from './utils/file-utils.js';
 

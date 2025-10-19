@@ -1,0 +1,77 @@
+# Example repository list for analyze-repos.sh
+# Format: owner/repo-name or full GitHub URLs
+# Lines starting with # are comments and will be ignored
+
+# Popular JavaScript libraries
+facebook/react
+microsoft/vscode
+nodejs/node
+vercel/next.js
+webpack/webpack
+
+# Can also use full URLs
+https://github.com/expressjs/express
+https://github.com/lodash/lodash
+
+# TypeScript repositories
+microsoft/TypeScript
+type-challenges/type-challenges
+
+# Vue.js ecosystem
+vuejs/vue
+vuejs/core
+
+# Testing frameworks
+jestjs/jest
+vitest-dev/vitest
+
+
+
+https://github.com/airbnb/javascript.git
+https://github.com/alpinejs/alpine.git
+https://github.com/angular/angular.git
+https://github.com/aws/aws-sdk-js.git
+https://github.com/axios/axios.git
+https://github.com/jashkenas/backbone.git
+https://github.com/chalk/chalk.git
+https://github.com/chartjs/Chart.js.git
+https://github.com/tj/commander.js.git
+https://github.com/zloirock/core-js.git
+https://github.com/webpack-contrib/css-loader.git
+https://github.com/debug-js/debug.git
+https://github.com/motdotla/dotenv.git
+https://github.com/eslint/eslint.git
+https://github.com/fastify/fastify.git
+https://github.com/TryGhost/Ghost.git
+https://github.com/hexojs/hexo.git
+https://github.com/h5bp/html5-boilerplate.git
+https://github.com/bigskysoftware/htmx.git
+https://github.com/jasmine/jasmine.git
+https://github.com/jquery/jquery.git
+https://github.com/nodeca/js-yaml.git
+https://github.com/karma-runner/karma.git
+https://github.com/koajs/koa.git
+https://github.com/meteor/meteor.git
+https://github.com/MithrilJS/mithril.js.git
+https://github.com/mochajs/mocha.git
+https://github.com/moment/moment.git
+https://github.com/Automattic/mongoose.git
+https://github.com/npm/node-semver.git
+https://github.com/nuxt/nuxt.git
+https://github.com/parcel-bundler/parcel.git
+https://github.com/preactjs/preact.git
+https://github.com/prettier/prettier.git
+https://github.com/remix-run/react-router.git
+https://github.com/reduxjs/redux.git
+https://github.com/balderdashy/sails.git
+https://github.com/shelljs/shelljs.git
+https://github.com/sveltejs/kit.git
+https://github.com/tailwindlabs/tailwindcss.git
+https://github.com/mrdoob/three.js.git
+https://github.com/jashkenas/underscore.git
+https://github.com/dcloudio/uni-app.git
+https://github.com/videojs/video.js.git
+https://github.com/winstonjs/winston.git
+https://github.com/pmndrs/zustand.git
+https://github.com/google/zx.git
+
