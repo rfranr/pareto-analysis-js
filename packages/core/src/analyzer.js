@@ -139,8 +139,7 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null),
       const rec = (missingDetectors[prop] ||= { visited: 0 });
       rec.visited++;
 
-      // Add a generic visitor for unhandled node types
-      // must call features handler function 
+      // TODO: implement no-op tracking
       // FeatureTracker 
 
       const genericVisitor = (node, stateOrAncestors, ancestors) => {
