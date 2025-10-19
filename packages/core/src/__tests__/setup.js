@@ -1,7 +1,7 @@
 /**
  * Vitest setup file for common test utilities and global mocks
  */
-import { vi, expect } from "vitest";
+import { expect } from "vitest";
 
 // Global test utilities
 global.testUtils = {
@@ -109,17 +109,11 @@ const originalConsoleError = console.error;
 const originalConsoleWarn = console.warn;
 
 beforeEach(() => {
-  // Reset console spies
-  //   console.error = vi.fn();
-  //   console.warn = vi.fn();
   console.error = originalConsoleError;
   console.warn = originalConsoleWarn;
 });
 
 afterEach(() => {
-  // Restore console
-  //   console.error = originalConsoleError;
-  //   console.warn = originalConsoleWarn;
   console.error = originalConsoleError;
   console.warn = originalConsoleWarn;
 });

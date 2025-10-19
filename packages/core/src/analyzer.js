@@ -11,9 +11,9 @@ import { ARRAY_METHODS, MASTER_FEATURE_CATALOG } from './config/features.js';
 import {
   createExtendedWalkBase,
   isFunctionNode,
+  mapParserNodeToFeature,
   parseFile,
-  withAncestors,
-  mapParserNodeToFeature
+  withAncestors
 } from './utils/ast-utils.js';
 import {
   exitWithError,
@@ -467,6 +467,7 @@ function createFeatureDetectors(tracker) {
   });
 
 ////////
+// TODO: implement no-op tracking
   // const noOps = [
   //   'TSTypeAnnotation','TSTypeReference','TSQualifiedName','TSUnionType','TSIntersectionType',
   //   'TSTypeLiteral','TSInterfaceDeclaration','TSTypeAliasDeclaration','TSEnumDeclaration',
