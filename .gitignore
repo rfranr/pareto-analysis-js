@@ -74,3 +74,6 @@ temp/
 !docs/**/*.png
 !docs/**/*.svg
 !docs/**/*.csv
+
+# reallow specific files
+!.github/**/*.md
