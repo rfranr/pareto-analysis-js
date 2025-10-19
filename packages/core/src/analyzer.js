@@ -140,8 +140,7 @@ function createWalkerMapProxy(detectors, missingDetectors = Object.create(null),
       rec.visited++;
 
       // TODO: implement no-op tracking
-      // FeatureTracker 
-
+      // TODO: move function outside of proxy
       const genericVisitor = (node, stateOrAncestors, ancestors) => {
         console.warn(`Warning: No specific visitor for node type: ${prop}`);
         tracker.increment(`unhandled_${prop}`);
