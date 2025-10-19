@@ -7,7 +7,7 @@ export default defineConfig({
     ? 'https://rfranr.github.io' 
     : 'http://localhost:4321',
   base: process.env.NODE_ENV === 'production' 
-    ? '/pareto-analysis-js' 
+    ? '/pareto-analysis-js/' 
     : undefined,
   vite: {
     build: {
