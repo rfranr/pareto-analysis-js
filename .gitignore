@@ -78,3 +78,6 @@ temp/
 
 # reallow specific files
 !.github/**/*.md
+
+# allow app/dist to be served from github pages
+!apps/front/dist/
